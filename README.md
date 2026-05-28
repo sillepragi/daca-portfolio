@@ -23,7 +23,7 @@ Liitusin DACA programmiga, kuna soovin teha teadliku karjääripöörde andmeana
 
 ## Kontakt
 
-**GitHub:** https://github.com/sille-pragi
+**GitHub:** https://github.com/sillepragi
 
 **Email:** sille.pragi@gmail.com
 
