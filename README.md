@@ -27,7 +27,7 @@ Liitusin DACA programmiga, kuna soovin teha teadliku karjääripöörde andmeana
 
 **Email:** sille.pragi@gmail.com
 
-**LinkedIn:** https://www.linkedin.com/in/sille-pragi/
+**LinkedIn:** https://www.linkedin.com/in/sillepragi/
 
 
 
