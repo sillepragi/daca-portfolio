@@ -1,99 +1,111 @@
--- Nädal: 3      Meeskond: Turundusanalüüsi osakond     Roll: Müügikanalite efektiivsuse analüüs
+-- Week: 3      Department: Marketing analytics     Role: Analysis of sales channel effectiveness
 
--- Ülesanne on leida millised müügikanalid toovad enim müüke ja millised kliendid kasutavad milliseid kanaleid? Koostada tuleb müügikanalite analüüs.
+/*
+Task:
+The task is to find which sales channels bring the most sales and which customers use which channels? An analysis of sales channels needs to be created.
 
--- 1. Vaatan, millised müügikanalid on olemas sales tabelis
+Output:
+SQL queries (.sql file) + screenshot of results + analysis of sales channels
+*/
+
+-- 1. I will see which sales channels exist in the sales table
 SELECT DISTINCT channel 
 FROM sales 
 ORDER BY channel;
--- Olemas on kaks erinevat kanalit: online ja pood
+-- There are two different channels: online and store
 
--- 2. Milline kanal toob enim müüke?
+
+-- 2. Which channel brings in the most sales?
 SELECT
-  s.channel AS müügikanal,
-  COUNT(DISTINCT s.customer_id) AS kliente,
-  COUNT(s.sale_id) AS oste,
-  SUM(s.total_price) AS kogumüük
+  s.channel AS channel,
+  COUNT(DISTINCT s.customer_id) AS number_of_customers,
+  COUNT(s.sale_id) AS number_of_sales,
+  SUM(s.total_price) AS total_sales
 FROM sales s
 GROUP BY s.channel
-ORDER BY kogumüük DESC;
--- Enim müüke toob pood
+ORDER BY total_sales DESC;
+-- The store brings in the most sales
 
--- 3. Millistest linnadest kliendid milliseid kanaleid kasutavad?
+
+-- 3. Which channels do customers from which cities use?
 SELECT
-  s.channel AS müügikanal,
-  c.city AS linn,
-  COUNT(DISTINCT c.customer_id) AS kliente,
-  SUM(s.total_price) AS kogumüük
+  s.channel AS channel,
+  c.city AS city,
+  COUNT(DISTINCT c.customer_id) AS number_of_customers,
+  SUM(s.total_price) AS total_sales
 FROM sales s
 INNER JOIN customers c ON s.customer_id = c.customer_id
 GROUP BY s.channel, c.city
-ORDER BY müügikanal, kogumüük DESC;
--- Kõige enam kasutavad online kanalit Tallinnast, Tartust, Pärnust ja Narvast pärit inimesed. Kõige rohkem käivad poes Tallinnast, Tartust, Pärnust ja Narvast pärit inimesed.
+ORDER BY channel, total_sales DESC;
+-- People from Tallinn, Tartu, Pärnu and Narva use the online channel the most. People from Tallinn, Tartu, Pärnu and Narva shop the most.
 
--- Loen kokku klientide arvu (kes on ostnud) e-poes ja poes ehk milline kanal toob kõige rohkem kliente?
+
+-- I count the number of customers (who have purchased) in the online store and in the store, so which channel brings in the most customers?
 SELECT
-  c.channel AS müügikanal,
-  COUNT(DISTINCT c.customer_id) AS ostnud_klientide_arv
+  c.channel AS channel,
+  COUNT(DISTINCT c.customer_id) AS number_of_customers
 FROM customers s
 INNER JOIN sales c ON c.customer_id = s.customer_id
 GROUP BY c.channel
-ORDER BY ostnud_klientide_arv DESC;
--- poest ostnud klientide arv on 2278 ja e-poest ostnud klientide arv on 1706.
+ORDER BY number_of_customers DESC;
+-- The number of customers who purchased from store is 2278 and the number of customers who purchased online is 1706.
 
--- 4. Millised tooted müüvad millises kanalis?
+
+-- 4. Which products sell in which channel?
 SELECT
-  s.channel AS müügikanal,
-  p.category AS tootekategooria,
-  COUNT(DISTINCT c.customer_id) AS kliente,
-  COUNT(s.sale_id) AS oste,
-  SUM(s.total_price) AS kogumüük,
-  ROUND(AVG(s.total_price), 2) AS keskmine_ost
+  s.channel AS channel,
+  p.category AS product_category,
+  COUNT(DISTINCT c.customer_id) AS number_of_customers,
+  COUNT(s.sale_id) AS number_of_sales,
+  SUM(s.total_price) AS total_sales,
+  ROUND(AVG(s.total_price), 2) AS average_purchase
 FROM sales s
 INNER JOIN customers c ON s.customer_id = c.customer_id
 INNER JOIN products p ON s.product_id = p.product_id
 GROUP BY s.channel, p.category
-ORDER BY müügikanal, kogumüük DESC;
--- Online kanalis ostetakse kõige rohkem jalanõusid, meeste- ja naisteriideid. Poodides kohapeal ostetakse kõige rohkem meesteriideid, jalanõusid ja naisteriideid.
+ORDER BY channel, total_sales DESC;
+-- The most purchased items in the online channel are shoes, men's and women's clothing. The most purchased items in stores are men's clothing, shoes and women's clothing.
 
--- 5. Leian kõige efektiivsema kanali (müük per klient)
+
+-- 5. I find the most effective channel (sales per customer)
 SELECT
-  s.channel AS müügikanal,
-  COUNT(DISTINCT s.customer_id) AS kliente,
-  SUM(s.total_price) AS kogumüük,
-  ROUND(SUM(s.total_price) / COUNT(DISTINCT s.customer_id), 2) AS müük_per_klient
+  s.channel AS channel,
+  COUNT(DISTINCT s.customer_id) AS number_of_customers,
+  SUM(s.total_price) AS total_sales,
+  ROUND(SUM(s.total_price) / COUNT(DISTINCT s.customer_id), 2) AS sales_per_customer
 FROM sales s
 GROUP BY s.channel
-ORDER BY müük_per_klient DESC;
--- Kõige efektiivsem kanal on pood, kus müük kliendi kohta on 835,13 eurot (onlines on müük kliendi kohta 590,12 eurot).
+ORDER BY sales_per_customer DESC;
+-- The most effective channel is the store, where sales per customer are 835.13 euros (online sales per customer is 590.12 euros).
 
--- 6. Võrdlen kaupluseid - leian iga kaupluse müügikanalite jaotuse
+
+-- 6. I compare stores - I find the distribution of sales channels for each store
 SELECT
-  s.store_location AS kauplus,
-  s.channel AS müügikanal,
-  COUNT(s.sale_id) AS oste,
-  SUM(s.total_price) AS kogumüük,
-  ROUND(SUM(s.total_price) / COUNT(s.sale_id), 2) AS keskmine_ost
+  s.store_location AS store,
+  s.channel AS channel,
+  COUNT(s.sale_id) AS number_of_sales,
+  SUM(s.total_price) AS total_sales,
+  ROUND(SUM(s.total_price) / COUNT(s.sale_id), 2) AS average_purchase
 FROM sales s
 GROUP BY s.store_location, s.channel
-ORDER BY kauplus, kogumüük DESC;
+ORDER BY store, total_sales DESC;
 
--- Tuletan meelde, palju oli ettevõtte kogukäive
-SELECT SUM(total_price) AS kogukäive
+
+-- I remind myself what the company's total turnover was
+SELECT SUM(total_price) AS total_turnover
 FROM sales;
--- Ettevõtte kogukäive on 2 909 188,98 eurot
+-- The company's total turnover is 2 909 188.98 euros
 
 /* 
 
-Kolm füüsililst kauplust toob umbes 60% (kogumüük 1 902 430,30 eurot) ja e-pood umbes 40% (kogumüük 1 006 747,68 eurot) kogukäibest.
-Pärnu kauplus peaks rohkem online-müügile panustama, kuna Pärnu poe keskmine ost on madalaim. Turunduseelarvet peaks rohkem suunama online-müügile.
+The three physical stores bring in about 60% (total sales of 1 902 430.30 euros) and the online store about 40% (total sales of 1 006 747.68 euros) of the total turnover.
+The Pärnu store should contribute more to online sales, since the average purchase of the Pärnu store is the lowest. The marketing budget should be directed more to online sales.
 
+SALES CHANNEL ANALYSIS RESULTS:
 
-MÜÜGIKANALITE ANALÜÜSITULEMUS:
-
-1) Enim müüke toovad füüsilised poed (e-poe kogumüük on 1 006 747,68 eurot ja poodide kogumüük on 1 902 430,30 eurot). Kolme kaupluse kogumüük moodustab umbes 60% ja e-poe kogumüük umbes 40% kogukäibest. 
-2) Poest ostnud klientide arv on 2278 ja e-poest ostnud klientide arv on 1706 ehk pood toob ettevõttele enim kliente.
-3) Kõige efektiivsem kanal on pood, kus müük kliendi kohta on 835,13 eurot (onlines on müük kliendi kohta 590,12 eurot). See viitab sellele, et e-pood ei täida veel oma täit potentsiaali.
-4) Kõige enam kasutavad online kanalit Tallinnast, Tartust, Pärnust ja Narvast pärit inimesed. Kõige rohkem käivad poes samuti Tallinnast, Tartust, Pärnust ja Narvast pärit inimesed. Kuigi Narvas poodi hetkel ei ole, on sealt pärit üsna suur hulk kliente.
+1) Physical stores bring in the most sales (total sales of the online store are 1,006,747.68 euros and total sales of the stores are 1 902 430.30 euros). The total sales of the three stores account for about 60% and the total sales of the online store are about 40% of the total turnover.
+2) The number of customers who bought in the store is 2278 and the number of customers who bought in the online store is 1706, meaning that the store brings the most customers to the company.
+3) The most effective channel is the store, where sales per customer are 835.13 euros (online sales per customer are 590.12 euros). This indicates that the online store is not yet fulfilling its full potential.
+4) People from Tallinn, Tartu, Pärnu and Narva use the online channel the most. People from Tallinn, Tartu, Pärnu and Narva also visit the store the most. Although there is currently no store in Narva, a fairly large number of customers come from there.
 
 */

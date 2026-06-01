@@ -1,36 +1,36 @@
-# Disainiotsused: UrbanStyle Investor Dashboard (Nädal 5)
+# Design decisions: UrbanStyle investor dashboard (Week 5)
 
-Käesolev dokument selgitab UrbanStyle.ltd investor-dashboardi prototüübi loomisel tehtud disainiotsuseid. Dashboardi eesmärk on vastata tegevjuht neljale põhiküsimusele.
+This document explains the design decisions made when creating the prototype of the UrbanStyle.ltd investor dashboard. The dashboard aims to answer four key questions for the CEO.
 
-## 1. Paigutus ja hierarhia (F-muster)
-Dashboard on üles ehitatud järgides inimaju loomupärast lugemismustrit (F-muster), kus olulisim info asub vasakul üleval.
+## 1. Layout and hierarchy (F-pattern)
+The dashboard is structured following the natural reading pattern of the human brain (F-pattern), where the most important information is located at the top left.
 
-*   **Ülemine rida (KPI kaardid):** Kuvatud on neli peamist mõõdikut (Kogutulu, Klientide arv, AOV, Kasv %). Need on peamised numbrid, mis annavad kohese ülevaate ettevõtte olukorrast.
-*   **Keskne ala:** Müügitrendi joondiagramm hõlmab suurima pinna, kuna see vastab tegevjuhi kõige kriitilisemale küsimusele: "Kas me kasvame või sureme?".
-*   **Alumine ala:** Toetavad graafikud (tooted ja asukohad) on paigutatud kõrvuti, et pakkuda detailsemat sissevaadet ilma peafookust segamata.
+* **Top row (KPI cards):** The four main metrics are displayed (Total Revenue, Number of Customers, AOV, Growth %). These are the main numbers that provide an immediate overview of the state of the company.
+* **Middle area:** The sales trend line chart covers the largest area, as it answers the CEO's most critical question: "Are we growing or dying?".
+* **Bottom area:** Supporting charts (products and locations) are placed side by side to provide more detailed insight without distracting from the main focus.
 
-## 2. Diagrammitüüpide valik
-Iga diagramm on valitud lähtuvalt andmete tüübist ja ärilisest eesmärgist:
+## 2. Choice of chart types
+Each chart is chosen based on the type of data and business purpose:
 
-*   **Joondiagramm (Müügitrend):** Valitud trendi näitamiseks ajas. Joon ühendab punktid, võimaldades silmal hetkega tuvastada kasvu ja hooajalisust (nt detsembri tippu).
-*   **Horisontaalne tulpdiagramm (Müügikanalid):** Tulpdiagramm on parim valik müügikanalite omavaheliseks võrdlemiseks, kuna inimsilm suudab tulpade pikkusi eristada ja võrrelda palju täpsemalt kui näiteks sektordiagrammi nurki või pindalasid.
-*   **Sektordiagramm (Asukohad):** Kasutatud osakaalu näitamiseks tervikust. Kuna kategooriaid on vähe, on see vaade selge ja intuitiivne.
+* **Line chart (Sales trend):** Selected to show the trend over time. The line connects the points, allowing the eye to instantly identify growth and seasonality (e.g., the December peak).
+* **Horizontal bar chart (Sales channels):** A bar chart is the best choice for comparing sales channels, as the human eye can distinguish and compare bar lengths much more accurately than, for example, the angles or areas of a pie chart.
+* **Piston chart (Locations):** Used to show the proportion of the whole. Since there are few categories, this view is clear and intuitive.
 
-## 3. Värvipsühholoogia ja järjepidevus
-Kasutasin UrbanStyle'i ametlikku stiiliraamatut, et luua professionaalne ja usaldusväärne kuvand:
+## 3. Color psychology and consistency
+I used the official UrbanStyle stylebook to create a professional and reliable image:
 
-*   **Navy (#1A1A2E):** Tallinna esinduskaupluse ja positiivse kasvu märkimiseks. See peegeldab brändi jätkusuutlikkuse fookust.
-*   **Teal (#009B8D):** Kanalite tähistamiseks.
-*   **Halltoonid:** Vähemoluliste või väiksemate asukohtade (Pärnu) jaoks, et vähendada visuaalset müra ja hoida fookust olulisel.
+* **Navy (#1A1A2E):** To indicate the flagship store in Tallinn and positive growth. This reflects the brand's focus on sustainability.
+* **Teal (#009B8D):** To indicate channels.
+* **Grayscale:** For less important or smaller locations (Pärnu) to reduce visual noise and keep the focus on what is important.
 
-## 4. Teksti joondus ja *"Data-Ink Ratio"*
-Järgisin Edward Tufte'i põhimõtet, kus iga piksel peab edastama informatsiooni:
+## 4. Text alignment and "Data-Ink Ratio"
+I followed Edward Tufte's principle, where every pixel should convey information:
 
-*   **Pealkirjade joondus:** Kõik pealkirjad on joondatud vasakule. See ühtib Z-lugemismustriga ja loob puhta vertikaalse joone.
-*   **Müra vähendamine:** Eemaldatud on liigsed ruudustikujooned (*gridlines*) ja 3D-efektid, mis moonutaksid andmete tajumist.
+* **Title alignment:** All titles are aligned to the left. This matches the Z-reading pattern and creates a clean vertical line.
+* **Noise reduction:** Excess gridlines (gridlines) and 3D effects that would distort the perception of the data have been removed.
 
-## 5. Interaktiivsus (*cross-filtering*)
-Dashboard toetab rist-filtreerimist. Klikkides näiteks Tallinna sektoril, filtreeruvad kõik teised graafikud reaalajas näitama ainult Tallinna andmeid.
+## 5. Interactivity (cross-filtering)
+The dashboard supports cross-filtering. For example, by clicking on the Tallinn sector, all other graphs will be filtered to show only Tallinn data in real time.
 
-## 6. Kokkuvõte
-Dashboard on valmis, interaktiivne ja optimeeritud kiireteks äriotsusteks.
+## 6. Summary
+The dashboard is ready, interactive, and optimized for quick business decisions.

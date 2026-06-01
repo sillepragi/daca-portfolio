@@ -1,36 +1,41 @@
--- Nädal: 2          Meeskond: Turundusanalüüsi osakond          Roll: Tooteandmete puhastaja (Product Data Cleaner)
+-- Week: 2          Department: Marketing analytics          Role: Product data cleaner
 
--- Ülesanne on leida duplikaadid, NULL väärtused ja ebajärjekindlused products tabelis ning dokumenteerida probleemid.
--- Väljundiks on puhastamisraport (duplikaadid leitud, NULL-id leitud, formaadivead, soovitused) + SQL skript.
+-- The task is to find duplicates, NULL values, and inconsistencies in the products table and document the problems.
+-- The output is a cleanup report (duplicates found, NULLs found, format errors, recommendations) + SQL script.
 
--- Loon test koopia
+
+-- I create a test copy
 CREATE TABLE products_test AS
 SELECT * 
 FROM products;
 
--- Vaatan mitu rida on products_test tabelis - kas on sama palju ridu nagu products tabelis
-SELECT COUNT(*) AS ridade_arv
+
+-- I look how many rows there are in the products_test table - are there the same number of rows as in the products table
+SELECT COUNT(*) AS number_of_rows
 FROM products_test;
 
-SELECT COUNT(*) AS ridade_arv
+SELECT COUNT(*) AS number_of_rows
 FROM products;
--- Loodud products_test tabelis on kokku 362 rida ja klapib products tabeli ridade arvuga.
+-- The created products_test table has a total of 362 rows and matches the number of rows in the products table
 
--- Leian tootenimede dublikaadid
+
+-- I find duplicate product names
 SELECT 
   product_name, 
-  COUNT(*) AS koopiate_arv
+  COUNT(*) AS number_of_copies
 FROM products_test
 GROUP BY product_name
 HAVING COUNT(*) > 1
-ORDER BY koopiate_arv DESC;
--- Kokku on 12 dublikaatset tootenime.
+ORDER BY number_of_copies DESC;
+-- There are a total of 12 duplicate product names
 
--- Dublikaatide koguarvu kontroll -- 12
-SELECT COUNT(*) - COUNT(DISTINCT product_name) AS dublikaatide_arv_kokku
+
+-- Checking the total number of duplicates -- 12
+SELECT COUNT(*) - COUNT(DISTINCT product_name) AS total_number_of_duplicates
 FROM products_test;
 
--- Millised konkreetsed read on dublikaadid
+
+-- Which specific rows are duplicates
 SELECT * FROM (
     SELECT
       product_id,
@@ -43,33 +48,37 @@ SELECT * FROM (
 WHERE rn > 1;
 
 
--- Leian NULL väärtused kriitilistes väljades
--- Kõigepealt tuletan meelde, millised on tabeli veerud, et valida välja kriitilised väljad, mida analüüsida
+-- I find NULL values ​​in critical fields
+-- First I recall what the columns of the table are to select the critical fields to analyze
 SELECT *
 FROM products_test
 LIMIT 5;
 
-SELECT
-    COUNT(*) FILTER (WHERE product_name IS NULL OR product_name = '') AS null_nimi,
-    COUNT(*) FILTER (WHERE category IS NULL OR category = '') AS null_kategooria,
-    COUNT(*) FILTER (WHERE cost_price IS NULL) AS null_ostuhind,
-    COUNT(*) FILTER (WHERE retail_price IS NULL) AS null_müügihind,
-    COUNT(*) FILTER (WHERE supplier IS NULL OR supplier = '') AS null_tarnija
-FROM products_test;
--- Leitud: 0 NULL nime, 0 NULL kategooriat, 0 NULL ostuhinda, 0 NULL müügihinda, 0 NULL tarnijat.
 
--- Kontrollin, kas on ebareaalseid hindu
--- Kas on negatiivseid ehk miinusmärgiga ostuhindu?
-SELECT COUNT(*) AS negatiivne_ostuhind
+SELECT
+    COUNT(*) FILTER (WHERE product_name IS NULL OR product_name = '') AS null_name,
+    COUNT(*) FILTER (WHERE category IS NULL OR category = '') AS null_category,
+    COUNT(*) FILTER (WHERE cost_price IS NULL) AS null_cost_price,
+    COUNT(*) FILTER (WHERE retail_price IS NULL) AS null_retail_price,
+    COUNT(*) FILTER (WHERE supplier IS NULL OR supplier = '') AS null_supplier
+FROM products_test;
+-- I found: 0 NULL names, 0 NULL categories, 0 NULL cost prices, 0 NULL retail prices, 0 NULL suppliers
+
+
+-- I check for unrealistic prices
+-- Are there any negative cost prices
+SELECT COUNT(*) AS negative_cost_price
 FROM products_test
 WHERE cost_price < 0;
 
--- Kas on negatiivseid ehk miinusmärgiga müügihindu?
-SELECT COUNT(*) AS negatiivne_müügihind
+
+-- Are there any negative retail prices?
+SELECT COUNT(*) AS negative_retail_prices
 FROM products_test
 WHERE retail_price < 0;
 
--- Kas on äärmuslikke ostuhindu (> 1000€)?
+
+-- Are there any extreme cost prices (> 1000€)?
 SELECT 
   product_name, 
   cost_price
@@ -77,7 +86,8 @@ FROM products_test
 WHERE cost_price > 1000
 ORDER BY cost_price DESC;
 
--- Kas on äärmuslikke müügihindu (> 1000€)?
+
+-- Are there any extreme retail prices (> 1000€)?
 SELECT
   product_name,
   retail_price
@@ -85,45 +95,47 @@ FROM products_test
 WHERE retail_price > 1000
 ORDER BY retail_price DESC;
 
--- Leitud: 0 negatiivset hinda, 0 äärmuslikku hinda.
+-- Found: 0 negative prices, 0 extreme prices.
 
--- Kontrollin kategooriate järjekindlust (nimekuju erinevusi)
-SELECT category, COUNT(*) AS arv
+
+-- I check for consistency of categories (differences in noun form)
+SELECT category, COUNT(*) AS number
 FROM products_test
 GROUP BY category
 ORDER BY category;
--- Leitud: 0 kategooriate formaadiviga
+-- I found: 0 category format errors
 
 
-/* PUHASTAMISRAPORT:
-1) 12 dublikaatset tootenime
-2) 0 NULL väärtust kriitilistes väljades
-3) 0 negatiivset või äärmuslikku hinda
-4) 0 erinevat kategooriate nimekuju
-5) 0 NULL kategooriat
-KOKKU on 12 probleemset väärtust
-Tooteanalüüsi mõjutab tootenimede dublikaadid. Tuleb puhastada tootenimed.
+/* CLEANING REPORT:
+1) 12 duplicate product names
+2) 0 NULL values ​​in critical fields
+3) 0 negative or extreme prices
+4) 0 different category name forms
+5) 0 NULL categories
+TOTAL 12 problematic values
+Product analysis is affected by duplicate product names. Product names need to be cleaned.
 */
 
-
-
--- Viin sisse puhastamise testtabelis products_test
--- Ühtlusta kategooriate nimed
+-- I START CLEANING THE DATA
+-- Cleaning category names
 UPDATE products_test
 SET category = INITCAP(TRIM(category))
 WHERE category != INITCAP(TRIM(category));
 
--- Kontrolli tulemust
-SELECT category, COUNT(*) AS arv
+
+-- Check the result
+SELECT category, COUNT(*) AS number
 FROM products_test
 GROUP BY category ORDER BY category;
--- päringud tõestavad veelkord, et mitte ühtegi kategooriate nimevormide erinevust ei esine. Seega kategooriate veerg on puhas.
+-- Queries prove once again that there are no differences in the name forms of the categories. So the categories column is clean
 
--- Puhastan products_test tabelis product_name dublikaadid
--- Enne kustutamist kirjutan üles ridade arvu. -- 362 rida
-SELECT COUNT(*) AS enne FROM products_test;
 
--- Kustutan duplikaadid (jätan alles ainult esimese rea iga product_id kohta)
+-- I clean product_name duplicates in the product_test table
+-- I write down the number of rows before deleting -- 362 rows
+SELECT COUNT(*) AS before FROM products_test;
+
+
+-- I delete duplicates (I only keep the first row for each product_id)
 
 --SELECT *
 --FROM products_test
@@ -134,8 +146,10 @@ WHERE product_id NOT IN (
     GROUP BY product_name
 );
 
--- Kontrollin tulemust
-SELECT COUNT(*) AS ridu_pärast FROM products_test;
+
+-- I check the result
+SELECT COUNT(*) AS rows_after FROM products_test;
+
 
 SELECT 362-350;
--- products_test tabelis on kokku 350 rida ehk 12 dublikaati on kustutatud.
+-- The products_test table has a total of 350 rows, meaning 12 duplicates have been deleted

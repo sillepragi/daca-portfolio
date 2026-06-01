@@ -1,128 +1,143 @@
--- Nädal: 4      Meeskond: Turundusanalüüsi osakond     Roll: Müügi koondandmed (Sales Aggregation)
+-- Week: 4      Department: Marketing analytics     Role: Sales aggregation
 
--- Ülesanne on koostada müügistatistika raport: kuu- ja kategooriapõhised koondnumbrid, kuised trendid. 
+/*
+Task:
+The task is to prepare a sales statistics report: monthly and category-based aggregate numbers, monthly trends.
 
--- 1. Milline on 2024. aasta müük kuude kaupa?
+Outputs:
+3 SQL queries + summary table (main findings).
+*/
+
+
+-- 1. What are the sales by month for 2024?
 SELECT
-  DATE_TRUNC('month', sale_date) AS kuu,
-  COUNT(sale_id) AS tellimuste_arv,
-  SUM(total_price) AS kogukäive,
-  ROUND(AVG(total_price), 2) AS keskmine_tellimus
+  DATE_TRUNC('month', sale_date) AS month,
+  COUNT(sale_id) AS number_of_sales,
+  SUM(total_price) AS total_sales,
+  ROUND(AVG(total_price), 2) AS average_sale
 FROM sales
 WHERE sale_date BETWEEN '2024-01-01' AND '2024-12-31'
 GROUP BY DATE_TRUNC('month', sale_date)
-ORDER BY kogukäive DESC;   
+ORDER BY total_sales DESC;   
 
 
--- 1. Milline on 2024. aasta müük kuude ja tootekategooriate kaupa
+-- 1.1. What are the sales for 2024 by month and product category?
 SELECT
-  DATE_TRUNC('month', s.sale_date) AS kuu,
-  p.category AS toote_kategooria,
-  COUNT(s.sale_id) AS tellimuste_arv,
-  ROUND(AVG(s.total_price), 2) AS keskmine_tellimus,
-  SUM(s.total_price) AS kogukäive
+  DATE_TRUNC('month', s.sale_date) AS month,
+  p.category AS product_category,
+  COUNT(s.sale_id) AS number_of_sales,
+  ROUND(AVG(s.total_price), 2) AS average_sale,
+  SUM(s.total_price) AS total_sales
 FROM sales s
 INNER JOIN products p ON s.product_id = p.product_id
 WHERE DATE_TRUNC('month', sale_date) BETWEEN '2024-01-01' AND '2024-12-31'
 GROUP BY DATE_TRUNC('month', sale_date), category
-ORDER BY toote_kategooria, tellimuste_arv DESC;
+ORDER BY product_category, number_of_sales DESC;
+/* Result: In 2024, total annual turnover has increased by approximately 100%.
+Total turnover and number of orders in 2024 are highest in December (550 orders) and in the summer months (Aug, July, June).
+Since women's clothing (dresses, blouses, etc.) sales are highest in December, June and August,
+it can be concluded that the summer collection fits well with the target group and in the following years, lighter
+and sustainable materials that customers prefer should be stocked for the summer.
+The trend in the summer months suggests that targeted marketing campaigns are effective.
+The peak in December is probably related to pre-holiday shopping and gift-giving.
+The peak in December shows that Christmas campaigns are successful.
+Also should consider increasing your social media budget during these periods to maximize purchases.
+*/
 
--- Tulemus: 2024. aastal on aastane kogukäive tõusnud ligikaudu 100%. Kogukäive ja tellimuste arv on 2024. aastal kõige kõrgem detsembrikuus (550 tellimust) ja suvekuudel (aug, juuli, juuni). Kuna naiste rõivad (kleidid, pluusid jne) müük on kõige kõrgem detsembris, juunis ja augustis, siis saab järeldada, et suvine kollektsioon klapib hästi sihtrühmaga ning järgmistel aastatel tuleks suveks varuda just kergemaid ja jätkusuutlikke materjale, mida kliendid eelistavad. Suvekuude trend viitab sellele, et suunatud turunduskampaaniad on efektiivsed. Detsembrikuu tipp on ilmselt seotud pühade-eelse ostlemise ja kingituste tegemisega. Detsembri tipp näitab, et jõulukampaaniad on edukad.  Samuti peaks kaaluma sotsiaalmeedia eelarve suurendamist just nendel perioodidel, et maksimeerida oste.
 
-
--- 2. Milline on müük kategooriate kaupa?
-
+-- 2. What are the sales by category?
 SELECT
-  p.category AS toote_kategooria,
-  COUNT(DISTINCT p.product_id) AS toodete_arv,
-  ROUND(AVG(s.unit_price), 2) AS keskmine_hind,
-  SUM(s.quantity) AS müüdud_kogus,
-  SUM(s.total_price) AS kogumüük
+  p.category AS product_category,
+  COUNT(DISTINCT p.product_id) AS number_of_products,
+  ROUND(AVG(s.unit_price), 2) AS average_sale,
+  SUM(s.quantity) AS quantity,
+  SUM(s.total_price) AS total_sales
 FROM sales s
 INNER JOIN products p ON s.product_id = p.product_id
 GROUP BY p.category
 HAVING SUM(s.total_price) > 100000
-ORDER BY müüdud_kogus DESC;
+ORDER BY total_sales DESC;
 
--- Leian ka kategooriate protsentuaalsed osakaalud ettevõtte kogukäibest:
+-- 2.1. I also find the percentage shares of the categories in the company's total turnover:
 SELECT 
-    p.category AS kategooria,
-    SUM(s.total_price) AS kategooria_tulu,
+    p.category AS category,
+    SUM(s.total_price) AS category_total_sales,
     ROUND(
         (SUM(s.total_price) / SUM(SUM(s.total_price)) OVER()) * 100, 
         2
-    ) AS protsent_kogukäibest
+    ) AS percentage_of_total_sales
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 GROUP BY p.category
-ORDER BY protsent_kogukäibest DESC;
+ORDER BY percentage_of_total_sales DESC;
+-- Result: The main source of revenue is brought in by the footwear, menswear and womenswear categories.
+-- The footwear category accounts for 27% of the company's total turnover, menswear accounts for 26% and womenswear accounts for 24%.
 
--- Tulemus: Peamise tuluallika toob sisse jalanõude, meesteriiete ja naisteriiete kategooriad. Jalanõude kategooria osakaal kogu ettevõtte käibest on 27%, meesteriiete osakaal on 26% ja naisteriiete osakaal on 24%. 
 
-
--- 3. Milline on 2024. aasta kuust-kuusse muutus?
-
-WITH kuu_myyk AS (
+-- 3. What is the month-to-month change in 2024?
+WITH monthly_sales AS (
     SELECT
-      DATE_TRUNC('month', sale_date) AS kuu,
-      SUM(total_price) AS käive
+      DATE_TRUNC('month', sale_date) AS month,
+      SUM(total_price) AS turnover
     FROM sales
     WHERE sale_date BETWEEN '2024-01-01' AND '2024-12-31'
     GROUP BY DATE_TRUNC('month', sale_date)
     )
 SELECT
-  kuu,
-  käive,
-  LAG(käive) OVER (ORDER BY kuu) AS eelmine_kuu,
-  käive - LAG(käive) OVER (ORDER BY kuu) AS muutus
-FROM kuu_myyk
-ORDER BY muutus DESC;
+  month,
+  turnover,
+  LAG(turnover) OVER (ORDER BY month) AS last_month,
+  turnover - LAG(turnover) OVER (ORDER BY month) AS change
+FROM monthly_sales
+ORDER BY change DESC;
 
-/* 
-Tulemus:
-Kuigi 2024. aasta üldine areng on stabiilne, täheldasin teisel poolaastal (augustis, septembris ja novembris) mõõdukat kuu-põhist käibelangust, ehk neil kuudel käive langes eelmise kuuga võrreldes, mis on tõenäoliselt tingitud suvise kõrghooaja lõppemisest. Mistõttu peaks rõhku panema suvelõpu ja sügise alguse turunduskampaaniatele, näiteks nagu "koolimineku soodustused" vms. Samuti soovitan analüüsida, kas novembri langust saaks tulevikus leevendada varasema jõulukampaania alustamisega.
-Kuu trendi vaadates on näha, et detsembrikuu jõulukampaania on väga efektiivne, kuna detsembrikuu käive tõusis 54%, võrreldes novembrikuu käibega. Samuti suur käibe tõus tähendab ka vajadust vaadata enne detsembrikuud üle lao seisud, et vältida toodete ootamatut lõppemist.
-Käibelangus neil kolmel kuul võib olla tingitud ka laoseisu ja varude probleemist. Ehk kui näiteks populaarseid tooteid ei tarnita õigeaegselt juurde, siis langeb nii tehingute arv kui ka käive võrreldes eelmise kuuga. Seega tuleb kontrollida laoseisu ja reaalset olukorda (palju on reaalselt tooteid laos olemas), et saaks vajadusel laoseisu täiendada.
+/*
+Result:
+Although the overall development of 2024 is stable, I observed a moderate monthly decline in turnover in the second half of the year (August, September and November), 
+i.e. turnover in these months fell compared to the previous month, which is likely due to the end of the summer high season.
+Therefore, emphasis should be placed on marketing campaigns at the end of summer and the beginning of autumn, such as "back-to-school discounts" etc.
+I also recommend analyzing whether the decline in November could be mitigated in the future by starting an earlier Christmas campaign.
+Looking at the monthly trend, it can be seen that the December Christmas campaign is very effective, as December turnover increased by 54% compared to November turnover.
+Also, the large increase in turnover means the need to review stock levels before December to avoid unexpected product shortages.
+The decline in turnover in these three months may also be due to inventory and stock problems.
+For example, if popular products are not delivered on time, both the number of transactions and turnover will drop compared to the previous month.
+Therefore, it is necessary to check the inventory and the real situation (how many products are actually in stock) so that the inventory can be replenished if necessary.
 */
 
 
--- 4. Milline on 2024. aasta kuust-kuusse kasvu protsent?
-
-WITH kuu_müük AS (
+-- 4. What is the month-on-month growth percentage for 2024?
+WITH monthly_sales AS (
     SELECT
-        DATE_TRUNC('month', sale_date) AS kuu,
-        SUM(total_price) AS käive
+        DATE_TRUNC('month', sale_date) AS month,
+        SUM(total_price) AS turnover
     FROM sales
     WHERE sale_date BETWEEN '2024-01-01' AND '2024-12-31'
     GROUP BY DATE_TRUNC('month', sale_date)
 )
 SELECT
-    kuu,
-    käive,
-    LAG(käive) OVER (ORDER BY kuu) AS eelmine_kuu,
-    ROUND(((käive - LAG(käive) OVER (ORDER BY kuu)) / LAG(käive) OVER (ORDER BY kuu)) * 100, 1) AS kasvu_protsent
-FROM kuu_müük
-ORDER BY kasvu_protsent DESC;
+    month,
+    turnover,
+    LAG(turnover) OVER (ORDER BY month) AS last_month,
+    ROUND(((turnover - LAG(turnover) OVER (ORDER BY month)) / LAG(turnover) OVER (ORDER BY month)) * 100, 1) AS growth_percentage
+FROM monthly_sales
+ORDER BY growth_percentage DESC;
 
--- Tulemus: On näha, et kõige kõrgem kuu-põhine kasvuprotsent on 2024. aasta detsembrikuu (u 54%) ja kõige madalam on kasvuprotsent septembrikuus (u -25%).
-
+-- Result: It can be seen that the highest monthly growth rate is in December 2024 (approximately 54%) and the lowest growth rate is in September (approximately -25%).
 
 /*
+Sales summary —
+* Annual turnover growth (in 2024): 100%, which confirms the rapid expansion of the company and the functioning of the business model.
 
-Müügi koondandmed — 
-* Aastane käibe kasv (2024. aastal): 100%, mis kinnitab ettevõtte kiiret laienemist ja ärimudeli toimimist.
+* Average order value (in 2024):
+highest in October 326€
+lowest in March 266€
 
-* Keskmine tellimusväärtus (2024. a): 
-kõrgeim oktooberis 326€
-madalaim märtsis 266€
+* Monthly turnover growth (in 2024):
+highest in December 54%
+lowest in September -25%
 
-* Kuu-põhine käibe kasv (2024. a):
-kõrgeim detsembrikuus 54%
-madalaim septembris -25%
-
-* TOP kategooriate osakaal käibest:		     toote keskmine hind:
-jalanõud 27%						                                216€
-meesteriided 26%		                                  			190€
-naisteriided 24%				                                   	200€
-
+* Share of TOP categories in turnover:          average product price:
+footwear         27%                                                  216€
+men's clothing   26%                                                  190€
+women's clothing 24%                                                  200€
 */

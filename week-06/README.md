@@ -1,30 +1,30 @@
-# Nädal 6: *Investor Dashboard*: Andmelugu
+# Week 6: Investor dashboard: Data story
 
-## Mida ma tegin
-Selle nädala eesmärk oli muuta 5. nädalal koostatud tehniline *dashboard* professionaalseks andmelooks, mis on suunatud UrbanStyle'i investoritele ja juhtkonnale. Projekti raames teostasin järgmised tegevused:
+## What I did
+The goal of this week was to turn the technical dashboard created in week 5 into a professional data story aimed at UrbanStyle investors and management. As part of the project, I performed the following activities:
 
-* **Strateegiline viimistlus:** Rakendasid *dashboard*-ile "Ja mis siis?" testi, tagades, et iga graafik vastaks konkreetsele äriküsimusele ja toetaks strateegilisi otsuseid.
-* **Konteksti lisamine:** Lisasin joondiagrammidele annotatsioonid (nt suveperioodi mõju selgitamiseks) ning viitejooned kvartali eesmärkide visualiseerimiseks.
-* **Juhtide kokkuvõte *(Executive Summary)*:** Koostasin *dashboard*-i ülaosasse kokkuvõtte, mis annab investorile 30 sekundiga ülevaate ettevõtte kasvust (+4% *YoY*) ja peamistest riskikohtadest.
-* **Visuaalse hierarhia (F-muster):** Paigutasin kõige kriitilisemad KPI kaardid ja juhtide kokkuvõtte ekraani vasakusse ülanurka, arvestades inimeste loomulikku silmaliikumise mustrit info tarbimisel.
+* **Strategic finish:** Applied the "So What?" test to the dashboard, ensuring that each chart answered a specific business question and supported strategic decisions.
+* **Adding context:** Added annotations to line charts (e.g. to explain the impact of the summer season) and reference lines to visualize quarterly goals.
+* **Executive summary:** Created a summary at the top of the dashboard that gives investors a 30-second overview of the company's growth (+4% YoY) and key risk areas.
+* **Visual hierarchy (F-Pattern):** I placed the most critical KPI cards and the executive summary in the top left corner of the screen, considering the natural eye movement pattern of people when consuming information.
 
-## Peamised õppetunnid
-* **Lugu vs numbrid:** Mõistsin, et andmeanalüütiku väärtus ei seisne pelgalt numbrite raporteerimises, vaid võimes muuta need strateegilisteks andmelugudeks.
-* **Visuaalne hierarhia:** Mõistsin F-mustri olulisust disainis – kõige kriitilisem info (KPI kaardid ja kokkuvõte) peab asuma vasakul üleval, et haarata tähelepanu koheselt.
-* ***Data-Ink Ratio:*** Edward Tufte põhimõtteid järgides eemaldasin liigse "müra" (ruudustikujooned, 3D-efektid), et fookus jääks andmetele.
-* **Interaktiivsus:** Õppisin kasutama *cross-filtering* funktsionaalsust, mis võimaldab sidusrühmadel andmetesse "kaevuda" ja leida vastuseid ilma analüütiku sekkumiseta.
+## Key lessons learned
+* **Story vs. numbers:** I realized that the value of a data analyst is not just in reporting numbers, but in the ability to turn them into strategic data stories.
+* **Visual hierarchy:** I understood the importance of the F-Pattern in design – the most critical information (KPI cards and summary) should be located in the top left to immediately grab attention.
+* **Data-Ink Ratio:** Following Edward Tufte’s principles, I removed excess “noise” (grid lines, 3D effects) to keep the focus on the data.
+* **Interactivity:** I learned to use cross-filtering functionality, which allows stakeholders to "dig" into data and find answers without the intervention of an analyst.
 
-## AI kasutamine
-Selle nädala projektis oli NotebookLM ja teised AI tööriistad minu strateegilised abivahendid:
-* **Kriitiline kontroll:** Rakendasin RAG (*Retrieval-Augmented Generation*) põhimõtet, kontrollides kõik AI pakutud järeldused üle UrbanStyle'i tegelike andmete ja õppematerjalide põhjal, et vältida vigu.
-* **Andmeloo struktureerimine:** Kasutasin AI-d *"Setup-Conflict-Data-Resolution-Action"* raamistiku lihvimiseks, et minu esitlus oleks investoritele võimalikult veenev.
+## Using AI
+In this week's project, NotebookLM and other AI tools were my strategic tools:
+* **Critical check:** I applied the RAG (Retrieval-Augmented Generation) principle, checking all AI-suggested conclusions against UrbanStyle's real data and learning materials to avoid errors.
+* **Data story structuring:** I used AI to refine the "Setup-Conflict-Data-Resolution-Action" framework to make my presentation as convincing as possible to investors.
 
-## Failid
-- **[week6_executive_summary.md](individual/week6_executive_summary.md)** – Pärnu kaupluse lühikokkuvõte
-- **[week6_Pärnu_narrative.md](individual/week6_Pärnu_narrative.md)** – Pärnu kaupluse andmelugu
-- **[week6_Pärnu_dashboard_screenshot.png](individual/week6_Pärnu_dashboard_screenshot.png)** – Pärnu kaupluse *dashboard*-i kuvatõmmis
-- **[week6_Pärnu_dashboard.pbix](individual/week6_Pärnu_dashboard.pbix)** – Pärnu kaupluse *dashboard*'i *Power BI* fail
-- **[week6_Pärnu_dashboard.sql](individual/week6_Pärnu_dashboard.sql)** – Pärnu kaupluse SQL päringud koos selgitavate kommentaaridega
+## Files
+- **[week6_executive_summary.md](individual/week6_executive_summary.md)** – Pärnu store summary
+- **[week6_Pärnu_narrative.md](individual/week6_Pärnu_narrative.md)** – Pärnu store data story
+- **[week6_Pärnu_dashboard_screenshot.png](individual/week6_Pärnu_dashboard_screenshot.png)** – Pärnu store dashboard screenshot
+- **[week6_Pärnu_dashboard.pbix](individual/week6_Pärnu_dashboard.pbix)** – Pärnu store dashboard Power BI file
+- **[week6_Pärnu_dashboard.sql](individual/week6_Pärnu_dashboard.sql)** – Pärnu store SQL queries with explanatory comments
 
-## Meeskonna töö
-- **[week6_team_combined_view.md](team/week6_team_combined_view.md)** – meeskonna grupitöö koondvaade
+## Team work
+- **[week6_team_combined_view.md](team/week6_team_combined_view.md)** – Combined view of teamwork

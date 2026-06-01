@@ -1,21 +1,21 @@
-# Nädal 2: *SQL Cleaning* -- UrbanStyle'i andmete puhastamine
+# Week 2: SQL Cleaning — Cleaning UrbanStyle's data
 
-## Mida ma tegin
-- Õppisin, kuidas luua testkoopiaid tabelitest, kuidas leida ja eemaldada dublikaate, kasutades `GROUP BY` ja HAVING filtreid ning `ROW_NUMBER()` aknafunktsiooni.
-- Samuti õppisin, kuidas asendada puuduvad väärtused (NULL) asendustekstiga, kasutades `COALESCE` funktsiooni ja `UPDATE` käsku.
-- Valideerisin andmeid `CASE WHEN` funktsiooniga.
-- Parandasin erinevate vormingutega väärtused, rakendades `TRIM` ja `INITCAP` funktsioone.
-- Dokumenteerisin kõik tegevused ja muudatused.
-- Osalesin meeskonnatöös, kus ma puhastasin tooteandmete tabelit.
-- Vormistasin oma nädala töö *GitHub*i portfoolios.
+## What I did
+- I learned how to create test copies of tables, how to find and remove duplicates using `GROUP BY` and HAVING filters, and the `ROW_NUMBER()` window function.
+- I also learned how to replace missing values ​​(NULL) with replacement text using the `COALESCE` function and the `UPDATE` command.
+- I validated data using the `CASE WHEN` function.
+- I fixed values ​​with different formats using the `TRIM` and `INITCAP` functions.
+- I documented all activities and changes.
+- I participated in a team effort where I cleaned up a product data table.
+- I formatted my work for the week in a GitHub portfolio.
 
-## Peamised õppetunnid
-- Võtsin kasutusele protsessi *Test*, *Verify*, *Log*, *Commit*, mis tagab, et ma ei muudaks kunagi algandmeid ilma neid kontrollimata ja logimata. Enne põhiandmete muutmist, tuleb kõik läbi teha test_koopias.
-- SQL päringu täitmise järjekord on järgmine: `FROM` -> `WHERE` -> `GROUP BY` -> `HAVING` -> `SELECT` -> `ORDER BY` -> `LIMIT`.
+## Key lessons earned
+- I implemented a process of Test, Verify, Log, Commit, which ensures that I never change the original data without verifying and logging it. Before changing the master data, everything must be done in a test_copy.
+- The order of execution of the SQL query is as follows: `FROM` -> `WHERE` -> `GROUP BY` -> `HAVING` -> `SELECT` -> `ORDER BY` -> `LIMIT`.
 
-## Failid
-- **[week2_products_cleaning.sql](individual/week2_products_cleaning.sql)** – Tooteandmete puhastamise SQL päringud koos selgitavate kommentaaridega
-- **[week2_products_report.md](individual/week2_products_report.md)** – puhastamisraport
+## Files
+- **[week2_products_cleaning.sql](individual/week2_products_cleaning.sql)** – SQL queries for cleaning product data with explanatory comments
+- **[week2_products_report.md](individual/week2_products_report.md)** – cleaning report
 
-## Meeskonna töö
-- **[week2_team_cleaning_report.md](team/week2_team_cleaning_report.md)** – meeskonna koondraport
+## Teamwork
+- **[week2_team_cleaning_report.md](team/week2_team_cleaning_report.md)** – team summary report

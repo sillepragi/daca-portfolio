@@ -1,23 +1,23 @@
-## Nädal 8: Automatiseeritud *ETL Pipeline*
+## Week 8: Automated ETL pipeline
 
-Nädala 8 eesmärk oli liikuda staatiliselt analüüsilt dünaamilise ja automatiseeritud süsteemi. Lõime ühiselt koos meeskonnaga UrbanStyle OÜ-le täieliku *pipeline*, mis asendab seni neli tundi nädalas võtnud manuaalse töö sekunditega mõõdetava automatiseeritud protsessiga.
+The goal of Week 8 was to move from static analysis to a dynamic and automated system. Together with the team, we created a complete pipeline for UrbanStyle, which replaces the manual work that previously took four hours a week with an automated process measured in seconds.
 
-### Minu roll – Andmete pärimine (*EXTRACT*)
-Minu ülesandeks meeskonnas oli luua moodul `data_fetcher.py`, mis vastutab andmete hankimise eest otse Supabase REST API-st. 
+### My role – Data fetching (EXTRACT)
+My task in the team was to create the `data_fetcher.py` module, which is responsible for retrieving data directly from the Supabase REST API.
 
-**Peamised tegevused ja vastutus:**
-*   **API-ühenduse loomine:** Seadistasin turvalise ühenduse Supabase SDK abil, tagades, et tundlikud API-võtmed on isoleeritud `.env` faili ja ei leki GitHubi.
-*   **Dünaamiline filtreerimine:** Arendasin funktsioonid `fetch_sales` ja `fetch_customers`, mis võimaldavad pärida andmeid vastavalt soovitud kuupäevavahemikule (argumentidega `--start-date` ja `--end-date`).
+**Main activities and responsibilities:**
+* **Creating an API connection:** I set up a secure connection using the Supabase SDK, ensuring that sensitive API keys are isolated in a `.env` file and do not leak to GitHub.
+* **Dynamic filtering:** I developed the `fetch_sales` and `fetch_customers` functions, which allow you to fetch data according to the desired date range (with the `--start-date` and `--end-date` arguments).
 
-### Meeskonna tulemuste kokkuvõte
-Meeskonnatöö tulemusena sündis terviklik `pipeline.py`, mis ühendab kõik ETL etapid:
+### Team results summary
+The team's work resulted in a complete `pipeline.py` that connects all ETL stages:
 
-1.  **EXTRACT:** Minu moodul pärib värsked müügi- ja kliendiandmed.
-2.  **TRANSFORM:** Andmed puhastatakse duplikaatidest (nt eemaldati üle 5000 korduva rea) ja arvutatakse kriitilised KPI-d.
-3.  **LOAD:** Tulemused eksporditakse automaatselt ajatempliga CSV-failidesse ja luuakse interaktiivsed *Plotly* graafikud (HTML).
+1. **EXTRACT:** My module retrieves fresh sales and customer data.
+2. **TRANSFORM:** Data is cleaned of duplicates (e.g., more than 5,000 duplicate rows were removed) and critical KPIs are calculated.
+3. **LOAD:** Results are automatically exported to time-stamped CSV files and interactive Plotly graphs (HTML) are created.
 
-Süsteem on "tootmisvalmis" (*production-grade*), sisaldades detailset logimist (`pipeline.log`) ja andmekvaliteedi kontrolle igas etapis.
+The system is "production-grade", including detailed logging (`pipeline.log`) and data quality checks at each stage.
 
-### AI kasutamine
-**Kuidas AI aitas sel nädalal?**
-Kasutasin tehisintellekti abi *Plotly* visualiseerimise koordinaatide debugimiseks (eriti `domain` parameetri seadistamisel) ning pandas agregeerimisfunktsioonide süntaksi kontrollimiseks.
+### Using AI
+**How ​​did AI help this week?**
+I used artificial intelligence to debug the coordinates of the Plotly visualization (especially when setting the `domain` parameter) and to check the syntax of the Pandas aggregation functions.

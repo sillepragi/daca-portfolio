@@ -1,33 +1,54 @@
-# DACA Portfoolio -- Sille Pragi
+# Data Analytics Portfolio
 
-See repositoorium sisaldab minu DACA õppeprojekte ja portfooliot.
+This repository introduces my projects and learning journey in the Data Analyst Career Accelerator (DACA) program.
 
-## Minust
-Osalen programmis *Data Analyst Career Accelerator (DACA)*, mille käigus 11 nädala jooksul õpin andmeid pärima ja puhastama (*SQL, PostgreSQL*), kuidas andmeid analüüsida (*Python, Pandas*) ja visualiseerida (*Power BI*).
-Liitusin DACA programmiga, kuna soovin teha teadliku karjääripöörde andmeanalüüsi valdkonda ning arendada praktilisi oskusi andmete põhjal väärtuslike järelduste tegemiseks.
+## 👤 About me
+I am currently participating in the **Data Analyst Career Accelerator (DACA)** program, an intensive 11-week training focused on developing practical data analytics skills.
 
-## Eesmärk
-Õppida andmeanalüüsi -- *SQL, Python*, visualiseerimine -- ja ehitada professionaalne portfoolio.
+Throughout the program, I am learning how to:
+- Query and manage data using **SQL** and **PostgreSQL**
+- Clean, transform, and analyze data with **Python** and **Pandas**
+- Create meaningful visualizations and dashboards using **Power BI**
 
-## Nädala kaupa
-| Nädal | Teema | Staatus |
-|-------|-------|---------|
-| 0 | Onboarding | Läbitud |
-| 1 | SQL Basics | Läbitud |
-| 2 | SQL Cleaning | Läbitud |
-| 3 | SQL JOINs | Läbitud |
-| 4 | SQL Aggregation | Läbitud |
-| 5-6 | Visualiseerimine | Läbitud |
-| 7-8 | Python | Läbitud |
-| 9-10 | Portfoolio + Karjäär | Käimas |
+I joined the DACA program because I want to make a career switch into data analytics and develop practical skills to draw valuable conclusions from data.
 
-## Kontakt
+## 🎯 Goal
+- Build a strong foundation in data analytics
+- Develop practical skills in SQL, Python, and data visualization
+- Complete real-world projects and case studies
+- Create a professional portfolio that demonstrates my analytical capabilities
 
-**GitHub:** https://github.com/sillepragi
+## 🛠️ Tech Stack
+- **Databases:** PostgreSQL (via Supabase)
+- **Languages:** SQL, Python (Pandas, NumPy)
+- **Visualization:** Power BI
+- **Tools:** Git, GitHub, VS Code
 
-**Email:** sille.pragi@gmail.com
+## 📅 Learning Journey
+| Week | Topic | Status | Project |
+|:---:|-------|:---:|---|
+| 00 | **Onboarding & Setup** | ✅ Completed | [Environment Setup](./week-00) |
+| 01 | **SQL Fundamentals** | ✅ Completed | [Sales Exploration](./week-01) |
+| 02 | **Data Cleaning with SQL** | ✅ Completed | [Data Health Audit](./week-02) |
+| 03 | **SQL JOINs** | ✅ Completed | [Integrated Analytics](./week-03) |
+| 04 | **SQL Aggregation & KPIs** | ✅ Completed | [Business KPI Analysis](./week-04) |
+| 05–06 | **Data Visualization** | ✅ Completed | [Investor Dashboard](./week-05-06) |
+| 07–08 | **Python for Data Analysis** | ✅ Completed | [RFM Segmentation](./week-07-08) |
+| 09–10 | **Portfolio Development & Career Preparation** | 🚧 In Progress | [Recruitment Simulation](./week-09-10) |
 
-**LinkedIn:** https://www.linkedin.com/in/sillepragi/
+## 📫 Contact
+Feel free to connect with me or follow my data analytics journey:
+
+<a href="https://www.linkedin.com/in/sillepragi/">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" />
+</a>
+
+<a href="https://github.com/sillepragi">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" />
+</a>
+
+📧 sille.pragi@gmail.com
+
 
 
 

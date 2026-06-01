@@ -1,44 +1,44 @@
-# UrbanStyle.ltd: Meeskonna ühine strateegiline ülevaade (Nädal 6)
+# UrbanStyle.ltd: Team strategic review (Week 6)
 
-## Juhtide kokkuvõte *(Executive Summary)*
+## Executive summary
 
-*   **E-pood on peamine kasvumootor:** UrbanStyle’i müügitulu kasv on kõige kiirem e-kanalis (**+38%**), samas kui füüsilised kauplused näitavad stabiilsemat, kuid aeglasemat kasvu.
-*   **Jalanõud on läbiv müügihitt:** Sõltumata asukohast on jalanõude kategooria tõusnud **TOP 2** müügiartikli hulka, olles tugevaks käibeankruks kogu ettevõttele.
-*   **Kõrge ostujõuga kliendibaas:** Keskmine tellimuse väärtus (AOV) püsib märkimisväärselt kõrgel tasemel, jäädes vahemikku **273–291 €**.
-*   **Andmevõlg piirab analüüsi:** Praegu puuduvad täpsemad andmed, et hinnata, miks jääb osades asukohtades keskmine käive saavutamata (vajame infot sortimendi, kliendirahulolu ja logistika kohta).
-*   **Strateegiline fookus:** Prioriteediks on laovarude optimeerimine vastavalt sesoonsele nõudlusele ja Pärnu kaupluse realiseerimata potentsiaali aktiveerimine.
+* **E-commerce is the main growth engine:** UrbanStyle’s sales revenue growth is fastest in the e-channel (**+38%**), while physical stores show more stable but slower growth.
+* **Footwear is a consistent bestseller:** Regardless of location, the footwear category has risen to the **TOP 2** sales item, being a strong turnover anchor for the entire company.
+* **Customer base with high purchasing power:** Average order value (AOV) remains significantly high, staying in the **€273–€291** range.
+* **Data debt limits analysis:** There is currently no more precise data to assess why average turnover is not achieved in some locations (we need information on assortment, customer satisfaction and logistics).
+* **Strategic focus:** The priority is to optimize inventory according to seasonal demand and activate the unrealized potential of the Pärnu store.
 
 ---
 
-## Kasvumäärade võrdlus (YoY 2024 vs 2023)
+## Comparison of growth rates (YoY 2024 vs 2023)
 
-Andmete analüüs näitab ebaühtlast, kuid positiivset dünaamikat eri kanalite ja asukohtade lõikes. Kuigi Tallinn on käibelt jätkuvalt **TOP 1**, on e-pood meie tegelik kasvumootor.
+Data analysis shows uneven but positive dynamics across channels and locations. Although Tallinn continues to be **TOP 1** in terms of turnover, the online store is our real growth engine.
 
-| Asukoht / Kanal | Kasvumäär (%) | Äriline roll |
+| Location / Channel | Growth rate (%) | Business role |
 | :--- | :--- | :--- |
-| **E-pood** | **+38%** | Skaleeritav kasvumootor |
-| **Tartu** | **+13%** | Tugev regionaalne sooritus |
-| **Tallinn** | **+11%** | Brändi esindusüksus (TOP 1 maht) |
-| **Pärnu** | **+4%** | Stabiilsusankur / Alakasutatud potentsiaal |
+| **Online store** | **+38%** | Scalable growth engine |
+| **Tartu** | **+13%** | Strong regional performance |
+| **Tallinn** | **+11%** | Brand representative unit (TOP 1 volume) |
+| **Pärnu** | **+4%** | Stability / Underutilized potential |
 
 ---
 
-## Peamised järeldused ja trendid
+## Key findings and trends
 
-### 1. Sesoonsus ja müügitrendid
-*   **Pühademüük:** Detsembri müügikasv võrreldes novembriga on **1,5 kuni 2 korda suurem** peaaegu kõikides üksustes, välja arvatud Pärnus, kus domineerib suvine müügitipp.
-*   **Aasta alguse madalseis:** 2024. aasta jaanuaris ja veebruaris toimus füüsilistes kauplustes märgatav müügilangus. **E-pood** oli ainus kanal, mis suutis seda trendi vältida ja stabiilsust hoida.
-*   **Suveperiood:** Müügitrend on läbivalt kasvav suvekuudel, mis toetab UrbanStyle'i positsioneeringut puhkuse- ja linnaelustiili pakkujana.
+### 1. Seasonality and sales trends
+* **Holiday sales:** December sales growth compared to November is **1.5 to 2 times higher** in almost all units, except Pärnu, where the summer sales peak dominates.
+* **Year-end low:** January and February 2024 saw a noticeable sales decline in physical stores. **online store** was the only channel that managed to avoid this trend and maintain stability.
+* **Summer period:** The sales trend is consistently growing in the summer months, which supports UrbanStyle's positioning as a vacation and urban lifestyle provider.
 
-### 2. Tooteportfelli analüüs
-*   Jalanõud on kinnistanud koha **TOP 2 kategooriana** kõikides kauplustes, mis viitab vajadusele hoida selles kategoorias stabiilset ja laia valikut.
-*   Kõrge AOV (kuni 291 €) näitab, et meie kliendid on valmis investeerima kvaliteeti, eeldusel, et toodete kättesaadavus on tagatud.
+### 2. Product portfolio analysis
+* Footwear has consolidated its place as a **TOP 2 category** in all stores, which indicates the need to maintain a stable and wide selection in this category.
+* High AOV (up to €291) shows that our customers are willing to invest in quality, provided that product availability is guaranteed.
 
 ---
 
-## Strateegilised soovitused
+## Strategic recommendations
 
-1.  **Laovarude efektiivne juhtimine:** Viia toodete nõudlus ja saadavus kaupluste lõikes tasakaalu, et vältida tühje müügihetki *(stockouts)* kõrge nõudlusega perioodidel.
-2.  **Pärnu potentsiaali aktiveerimine:** Realiseerida Pärnu kaupluse potentsiaal läbi spetsiifilise kohaliku turundusplaani, et tõsta sealse üksuse kasvutempo lähemale ettevõtte keskmisele.
-3.  **Andmekogumise laiendamine:** Et mõista, miks jääb käibepotentsiaal täielikult realiseerimata, peame hakkama koguma andmeid kliendirahulolu, väljapaneku kvaliteedi ja logistilise täpsuse kohta.
-4.  **E-poe eelise hoidmine:** Kuna e-pood on ainus kanal, mis on immuunne aasta alguse langusele, tuleks kaaluda talviste kampaaniate nihutamist veelgi enam veebikanalisse.
+1. **Effective inventory management:** Balance product demand and availability across stores to avoid stockouts during periods of high demand.
+2. **Activating Pärnu potential:** Realize the potential of the Pärnu store through a specific local marketing plan to increase the growth rate of the unit there closer to the company average.
+3. **Expanding data collection:** To understand why the sales potential is not fully realized, we need to start collecting data on customer satisfaction, display quality and logistical accuracy.
+4. **Maintaining the online store advantage:** Since the online store is the only channel that is immune to the decline at the beginning of the year, we should consider shifting winter campaigns even more to the online channel.
