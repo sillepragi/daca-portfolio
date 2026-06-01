@@ -18,36 +18,40 @@ I joined the DACA program because I want to make a career switch into data analy
 - Complete real-world projects and case studies
 - Create a professional portfolio that demonstrates my analytical capabilities
 
-## 🛠️ Tech Stack
+## 🛠️ Tech stack
 - **Databases:** PostgreSQL (via Supabase)
 - **Languages:** SQL, Python (Pandas, NumPy)
 - **Visualization:** Power BI
 - **Tools:** Git, GitHub, VS Code
 
-## 📅 Learning Journey
+## 📅 Learning journey
 | Week | Topic | Status | Project |
 |:---:|-------|:---:|---|
 | 00 | **Onboarding & Setup** | ✅ Completed | [Environment Setup](./week-00) |
-| 01 | **SQL Fundamentals** | ✅ Completed | [Sales Exploration](./week-01) |
-| 02 | **Data Cleaning with SQL** | ✅ Completed | [Data Health Audit](./week-02) |
-| 03 | **SQL JOINs** | ✅ Completed | [Integrated Analytics](./week-03) |
-| 04 | **SQL Aggregation & KPIs** | ✅ Completed | [Business KPI Analysis](./week-04) |
-| 05–06 | **Data Visualization** | ✅ Completed | [Investor Dashboard](./week-05-06) |
-| 07–08 | **Python for Data Analysis** | ✅ Completed | [RFM Segmentation](./week-07-08) |
+| 01 | **SQL Fundamentals** | ✅ Completed | [Customers Data Landscape Analysis](./week-01) |
+| 02 | **Data Cleaning with SQL** | ✅ Completed | [Products Data Cleanup Report](./week-02) |
+| 03 | **SQL JOINs** | ✅ Completed | [Analysis of Sales Channel Effectiveness](./week-03) |
+| 04 | **SQL Aggregation & KPIs** | ✅ Completed | [Sales Aggregation Analysis](./week-04) |
+| 05–06 | **Data Visualization** | ✅ Completed | [Investor Dashboard & Storytelling](./week-05-06) |
+| 07–08 | **Python for Data Analysis** | ✅ Completed | [RFM Segmentation & Automated ETL Pipeline](./week-07-08) |
 | 09–10 | **Portfolio Development & Career Preparation** | 🚧 In Progress | [Recruitment Simulation](./week-09-10) |
 
 ## 📫 Contact
 Feel free to connect with me or follow my data analytics journey:
 
-• <a href="https://www.linkedin.com/in/sillepragi/">
+<a href="https://www.linkedin.com/in/sillepragi/">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" />
-  </a> LinkedIn
+    LinkedIn
+  </a>
 
-• <a href="https://github.com/sillepragi">
+<br>
+
+<a href="https://github.com/sillepragi">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" />
-  </a> GitHub
+    GitHub
+  </a>
 
-• 📧 sille.pragi@gmail.com
+📧 sille.pragi@gmail.com
 
 
 
