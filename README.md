@@ -39,15 +39,15 @@ I joined the DACA program because I want to make a career switch into data analy
 ## 📫 Contact
 Feel free to connect with me or follow my data analytics journey:
 
-<a href="https://www.linkedin.com/in/username/">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="24" />
-</a>
+• <a href="https://www.linkedin.com/in/sillepragi/">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="20" />
+  </a> LinkedIn
 
-<a href="https://github.com/username">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="24" />
-</a>
+• <a href="https://github.com/sillepragi">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="20" />
+  </a> GitHub
 
-📧 sille.pragi@gmail.com
+• 📧 sille.pragi@gmail.com
 
 
 
