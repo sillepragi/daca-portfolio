@@ -1,24 +1,24 @@
-# UrbanStyle puhastamisraport: Nädal 2
+# UrbanStyle cleanup report: Week 2
 
-## Tooteandmete puhastamisraport
+## Products data cleanup report
 
-Teostasin põhjaliku kontrolli testtabelis `products_test` ja tuvastasin järgmise olukorra:
+I performed a thorough check on the test table `products_test` and found the following situation:
 
-| Kontrollpunkt | Tulemus | Seisund |
+| Checkpoint | Result | Status |
 | :--- | :---: | :--- |
-| **1. Dublikaatsed tootenimed** | **12** | 🟢 **Puhastatud** |
-| 2. NULL väärtused kriitilistes väljades | 0 | 🟢 Korras |
-| 3. Negatiivsed või äärmuslikud hinnad | 0 | 🟢 Korras |
-| 4. Kategooriate nimevormingu erinevused | 0 | 🟢 Korras |
-| 5. NULL väärtusega kategooriad | 0 | 🟢 Korras |
-| **KOKKU PROBLEEME** | **12** | |
+| **1. Duplicate product names** | **12** | 🟢 **Cleaned** |
+| 2. NULL values ​​in critical fields | 0 | 🟢 OK |
+| 3. Negative or extreme prices | 0 | 🟢 OK |
+| 4. Differences in category name format | 0 | 🟢 OK |
+| 5. Categories with NULL values ​​| 0 | 🟢 OK |
+| **TOTAL ISSUES** | **12** | |
 
-**Järeldus:** Tooteanalüüsi mõjutavad peamiselt tootenimede duplikaadid.
+**Conclusion:** Product analysis is mainly affected by duplicate product names.
 
-## Teostatud puhastustegevused
+## Cleanup actions performed
 
-### Duplikaatide eemaldamine
-Kustutasin 12 dublikaatset rida, jättes alles vaid iga tootenime esimese esinemise (`product_id` alusel). Tulemuseks on products_test tabelis 350 rida ilma dublikaatideta. Kasutasin selleks `DELETE` päringut:
+### Duplicate removal
+I deleted 12 duplicate rows, keeping only the first occurrence of each product name (based on `product_id`). The result is 350 rows in the products_test table without duplicates. I used the `DELETE` query to do this:
 
 ```sql
 

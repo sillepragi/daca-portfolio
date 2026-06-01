@@ -1,74 +1,74 @@
-# Meeskonna koondraport: Nädal 2 - Andmete puhastamine
-**Osakond:** UrbanStyle Turundusanalüüsi osakond
+# Team summary report: Week 2 — Data cleanup
+**Department:** UrbanStyle Marketing analytics department
 
-## 1. Müügiandmete tabel
-Tuvastati **5509 probleemset rida**. Äriliselt tähendab see kolme tüüpi andmekvaliteedi probleeme, mis moonutavad UrbanStyle'i kogukäivet ja vajavad kiiret sekkumist.
+## 1. Sales table
+**5509 problematic rows** were identified. In business terms, this translates to three types of data quality issues that distort UrbanStyle’s total revenue and require immediate intervention.
 
-| Kategooria | Leitud probleeme | Kirjeldus |
+| Category | Issues Found | Description |
 | :--- | :---: | :--- |
-| Duplikaadid | 4013 | Korduvad `sale_id` väärtused (moonutavad kogukäivet) |
-| NULL customer_id | 1487 | Puuduv viide kliendile (takistab kliendianalüüsi) |
-| NULL sale_date | 0 | Andmed korras |
-| NULL total_price | 0 | Andmed korras |
-| Tuleviku kuupäevad | 9 | Kuupäev > tänane (loogikavead) |
-| **KOKKU** | **5509** | **Korduvad kirjed ja loogikavead** |
+| Duplicates | 4013 | Duplicate `sale_id` values ​​(distort total revenue) |
+| NULL customer_id | 1487 | Missing customer reference (prevents customer analysis) |
+| NULL sale_date | 0 | 🟢 Data OK |
+| NULL total_price | 0 | 🟢 Data OK |
+| Future Dates | 9 | Date > today (logic errors) |
+| **TOTAL** | **5509** | **Duplicate records and logic errors** |
 
-### Prioriteetide järjekord ja äriline mõju
-1.  **`customer_id` puudumine:** (KÕRGE) – Ei saa siduda klienti müügiga, mis teeb võimatuks lojaalsusprogrammide analüüsi.
-2.  **Duplikaadid:** (KESKMINE kuni KÕRGE) – Tekitavad ebausaldusväärse pildi kogukäibest, mis on investorite jaoks kriitiline viga.
-3.  **Tuleviku kuupäevad:** (MADAL) – Väike arv, lihtne parandada, ei mõjuta suurt pilti.
+### Priority order and business impact
+1. **Missing ``customer_id``:** (HIGH) – Cannot link customer to sales, making it impossible to analyze loyalty programs.
+2. **Duplicates:** (MIDDLE to HIGH) – Creates an unreliable picture of total sales, a critical error for investors.
+3. **Future dates:** (LOW) – Small number, easy to fix, does not affect the big picture.
 
 ---
 
-## 2. Kliendiandmete tabel
-Tuvastati **562 probleemset rida**. Puuduvate emailidega kliendid on sisuliselt anonüümsed kliendid, kelle puhul pole selge, kui paljud neist on erinevad inimesed ning kellele ei saa muuhulgas ka e-posti teel teateid saata. Duplikaatsete e-mailidega kliendid moonutavad statistilisi andmeid oste sooritanud klientide arvu kohta ning näiteks ka seda, kui palju kliente erinevates linnades tegelikult on.
+## 2. Customers table
+**562 problematic rows** were identified. Customers with missing emails are essentially anonymous customers, for whom it is not clear how many of them are different people and who cannot be notified by email, among other things. Customers with duplicate emails distort statistics about the number of customers who have made purchases, and for example, how many customers there actually are in different cities.
 
-| Kategooria | Leitud probleeme | Kirjeldus |
+| Category | Problems found | Description |
 | :--- | :---: | :--- |
-| Duplikaatsed e-mailid | 128 | Sama e-mail mitmel kliendil (moonutab klientide arvu) |
-| NULL eesnimi/perenimi | 0 | Andmed korras |
-| Ebajärjekindlad linnanimed | 54 | Erinevad nimekujud (nt tallinn vs Tallinn) |
-| NULL e-mail | 380 | Puuduvad kontaktandmed (anonüümsed kliendid) |
-| **KOKKU** | **562** | |
+| Duplicate emails | 128 | Same email for multiple customers (distorts the number of customers) |
+| NULL first name/last name | 0 | 🟢 Data OK |
+| Inconsistent city names | 54 | Different forms of names (e.g. tallinn vs. Tallinn) |
+| NULL email | 380 | Missing contact information (anonymous customers) |
+| **TOTAL** | **562** | |
 
 ---
 
-## 3. Tooteandmete tabel
-Tuvastati **12 probleemset rida**. Tooteanalüüsi suurim takistus on tootenimede dubleerimine.
+## 3. Products table
+**12 problematic rows** were identified. The biggest obstacle to product analysis is the duplication of product names.
 
-| Kategooria | Leitud probleeme | Kirjeldus |
+| Category | Problems found | Description |
 | :--- | :---: | :--- |
-| Duplikaatsed nimed | 12 | Sama tootenimi esineb mitu korda |
-| NULL nimi/hind | 0 | Andmed korras |
-| Loogilised vead | 0 | Negatiivsed või äärmuslikud hinnad puuduvad |
-| Ebajärjekindlad kategooriad | 0 | Kategooriate nimekujud on konsistentsed |
-| NULL kategooria | 0 | Klassifitseerimine on täielik |
-| **KOKKU** | **12** | |
+| Duplicate names | 12 | Same product name occurs multiple times |
+| NULL name/price | 0 | 🟢 Data OK |
+| Logical errors | 0 | 🟢 No negative or extreme prices |
+| Inconsistent categories | 0 | 🟢 Category name forms are consistent |
+| NULL category | 0 | 🟢 Classification is complete |
+| **TOTAL** | **12** | |
 
 ---
 
-## 4. Kvaliteedikontroll
-Tuvastati **1268 probleemset rida**. Kõige kriitilisem on hindade ebakõla tabelite vahel.
+## 4. Quality control
+**1268 problematic rows** were identified. The most critical is the price inconsistency between tables.
 
-| Kategooria | Leitud probleeme | Kirjeldus |
+| Category | Problems found | Description |
 | :--- | :---: | :--- |
-| Orvud (Orphan) kliendid | 0 | Kõik müügid viitavad eksisteerivale kliendile |
-| Orvud tooted | 0 | Kõik müügid viitavad eksisteerivale tootele |
-| **Hinna ebakõlad** | **664** | **Müügihind ei klapi tootehinnaga** |
-| Vaimkliendid | 592 | Kliendid, kes pole kunagi ostnud |
-| Vaimtooted | 12 | Tooted, mida pole kunagi müüdud |
-| **KOKKU** | **1268** | |
+| Orphan customers | 0 | 🟢 All sales refer to an existing customer |
+| Orphan products | 0 | 🟢 All sales refer to an existing product |
+| **Price inconsistencies** | **664** | **Sales price does not match product price** |
+| Spirit customers | 592 | Customers who have never purchased |
+| Spirit products | 12 | Products that have never been sold |
+| **TOTAL** | **1268** | |
 
 ---
 
-## 5. Kokkuvõte ja soovitused
+## 5. Summary and recommendations
 
-### Suurim üllatus
-*   **664 hinnaerinevust:** Müügiandmete ja tooteandmete vaheline ebakõla viitab tõsisele veale tabelite vahel.
-*   **Müügiandmete dublikaadid:** Need mõjutavad oluliselt UrbanStyle'i kogukäivet ja vajavad kiiret eemaldamist.
+### Biggest surprise
+* **664 price difference:** The discrepancy between sales data and product data indicates a serious error between the tables.
+* **Duplicate sales data:** These significantly affect UrbanStyle's total turnover and need to be removed immediately.
 
-### Soovitused edasiseks tegevuseks
-1.  **Andmeid ei saa praegu usaldada:** Enne tuleb läbi viia täielik puhastus.
-2.  **Prioriteet:** Alustada müügi- ja tooteandmete tabelite dublikaatide puhastamisega.
-3.  **Uurimine:** Tuvastada hindade ebakõla (664 kirjet) juurpõhjus – kas viga on tootehinnas või müügisummas?
-4.  **Alustada tuleb dublikaatide puhastamisega**
+### Recommendations for further action
+1. **Data cannot be trusted at this time:** A full cleanup must be performed first.
+2. **Priority:** Start cleaning duplicates in the sales and product data tables.
+3. **Investigation:** Identify the root cause of the price discrepancy (664 records) – is the error in the product price or the sales amount?
+4. **Start by cleaning up duplicates**

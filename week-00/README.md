@@ -1,17 +1,17 @@
-# Nädal 0: Tööriistade seadistamine
+# Week 0: Tools setup
 
-## Mida ma tegin
-- Seadistasin tööriistad Supabase'i (*PostgreSQL*), *GitHub*'i, *VS Code*'i, *Power BI* ja *NotebookLM*'i UrbanStyle'i andmete analüüsimiseks.
-- Tutvusin tööriistadega. 
-- Osalesin meeskonnatöö koostamisel.
-- Alustasin oma portfoolio loomise ja tööde dokumenteerimisega.
+## What I did
+- Set up the professional data analytics environment, including Supabase (PostgreSQL), GitHub, VS Code, Power BI and NotebookLM to analyze UrbanStyle’s business data.
+- I got to know with the core features and workflows of each tool.
+- I participated in teamwork.
+- Initiated my professional GitHub portfolio and began systematic documentation of my work.
 
-## Peamised õppetunnid
-- *PostgreSQL* võimaldab hallata UrbanStyle'i andmekaost palju efektiivsemalt kui *Excel*.
-- Oluline on süsteemne dokumenteerimine.
+## Key takeaways
+- PostgreSQL provides a significantly more efficient way to manage UrbanStyle’s "data chaos" than Excel.
+- Systematic documentation and logging are essential for ensuring transparency and reliability in data analysis.
 
-## Failid
-- **[setup_screenshot.png](individual/setup_screenshot.png)** – isikliku keskkonna kuvatõmmis
+## Files
+- **[setup_screenshot.png](individual/setup_screenshot.png)** – Screenshot of my personal environment setup
 
-## Meeskonna töö
-- **[week0_team_summary.md](team/week0_team_summary.md)** – Ülevaade meeskonnatööst
+## Teamwork
+- **[week0_team_summary.md](team/week0_team_summary.md)** – Teamwork overview

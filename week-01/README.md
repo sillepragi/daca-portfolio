@@ -1,22 +1,22 @@
-# Nädal 1: *SQL Basics* -- UrbanStyle'i andmete uurimine
+# Week 1: SQL Basics — Exploring UrbanStyle's data
 
-## Mida ma tegin
-- Õppisin kasutama kuut olulist SQL-i käsku: `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, `DISTINCT` ja `COUNT`.
-Kasutades uusi SQL-oskusi, viisin läbi esimese päris analüüsi sales tabelis. Tuvastasin andmetes dublikaate ja leidsin puuduvaid andmeid (NULL).
-- Osalesin meeskonna andmemaastiku koostamisel.
-- Vormistasin oma nädala töö *GitHub*i portfoolios.
+## What I did
+- I learned to use six important SQL commands: `SELECT`, `WHERE`, `ORDER BY`, `LIMIT`, `DISTINCT` and `COUNT`.
+Using my new SQL skills, I performed my first real analysis on the sales table. I identified duplicates in the data and found missing data (NULL).
+- I participated in creating the team's data landscape.
+- I formalized my work for the week in the GitHub portfolio.
 
-## Peamised õppetunnid
-- Andmekvaliteedil on väga suur roll analüüsis. SQL-päringutega ütlen andmebaasile, mida ma tahan näha, kuid tulemuste usaldusväärsus sõltub otseselt alusandmete puhtusest. Kui andmed on ebatäpsed, sisaldavad duplikaate või NULL-väärtusi, annavad ka tehniliselt korrektsed päringud äriliselt valesid vastuseid.
-- Oluline on süsteemne dokumenteerimine ja õige töövoog. Tegevustest peab maha jääma logi, et hiljem vajadusel saaks seda vaadata.
+## Key lessons
+- Data quality plays a huge role in analysis. With SQL queries, I tell the database what I want to see, but the reliability of the results directly depends on the purity of the underlying data. If the data is inaccurate, contains duplicates or NULL values, even technically correct queries will give commercially incorrect answers.
+- Systematic documentation and the right workflow are important. A log of the activities must be left behind so that it can be viewed later if necessary.
 
-## Failid
-- **[week_1_customers_exploration.sql](individual/week_1_customers_exploration.sql)** – minu SQL päringud koos selgitavate kommentaaridega
-- **[week_1_results_screenshot_nr_1.png](individual/week_1_results_screenshot_nr_1.png)** – linnade jaotuse tulemuse kuvatõmmis
-- **[week_1_results_screenshot_nr_2.png](individual/week_1_results_screenshot_nr_2.png)** – kindla linna klientide filtreerimise tulemuse kuvatõmmis
-- **[week_1_results_screenshot_nr_3.png](individual/week_1_results_screenshot_nr_3.png)** – puudulike e-mailide tulemuse kuvatõmmis
-- **[week_1_results_screenshot_nr_4.png](individual/week_1_results_screenshot_nr_4.png)** – dublikaatsete e-mailide tulemuse kuvatõmmis
-- **[week_1_results_screenshot_nr_5.png](individual/week_1_results_screenshot_nr_5.png)** – linnade alusel klientide loenduse tulemuse kuvatõmmis
+## Files
+- **[week_1_customers_exploration.sql](individual/week_1_customers_exploration.sql)** – my SQL queries with explanatory comments
+- **[week_1_results_screenshot_nr_1.png](individual/week_1_results_screenshot_nr_1.png)** – screenshot of the result of the city distribution
+- **[week_1_results_screenshot_nr_2.png](individual/week_1_results_screenshot_nr_2.png)** – screenshot of the result of filtering customers in a specific city
+- **[week_1_results_screenshot_nr_3.png](individual/week_1_results_screenshot_nr_3.png)** – screenshot of the result of incomplete emails
+- **[week_1_results_screenshot_nr_4.png](individual/week_1_results_screenshot_nr_4.png)** – screenshot of duplicate email results
+- **[week_1_results_screenshot_nr_5.png](individual/week_1_results_screenshot_nr_5.png)** – screenshot of customer count results by city
 
-## Meeskonna töö
-- **[week1_data_landscape.md](team/week1_data_landscape.md)** – ülevaade UrbanStyle'i andmekaosest
+## Team work
+- **[week1_data_landscape.md](team/week1_data_landscape.md)** – overview of UrbanStyle's data chaos

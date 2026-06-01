@@ -1,144 +1,139 @@
--- Nädal: 6      Meeskond: Turundusanalüüsi osakond   Roll: C - Pärnu kaupluse lugu
+-- Week: 6      Department: Marketing analytics     Role: The story of the Pärnu store
 
--- ÜLESANNE: Luua Pärnu kaupluse interaktiivne dashboard koos andmelooga. Pärnu on väikseim kauplus ja tugeva hooajalisusega (suvekuurort). Ülesanne on näidata hooajalist mustrit ja selle ärilist tähendust.
+/*
+Task:
+Create an interactive dashboard for the Pärnu store with a data story. 
+Pärnu is the smallest store and has strong seasonality (summer resort). 
+The task is to show the seasonal pattern and its business meaning.
 
--- VÄLJUND: Interaktiivne dashboard (3-5 diagrammi Pärnu andmetega). Juhtide kokkuvõte (3-5 peamist järeldust). Vähemalt 2 annotatsiooni diagrammidel ja 1 viitejoon (eesmärk või keskmine). Lisada andmelugu: 3-4 lauset narratiivina.
+Output:
+Interactive dashboard.
+Executive summary. 
+At least 2 annotations on the charts and 1 reference line (target or average). 
+Add a data story.
+*/
 
-
-
--- Samm 1: Leian Pärnu müügitrendi kuude lõikes + arvutan kõigi kuude keskmise ostu ja leian protsentuaalse erinevuse aasta keskmisega
-
-WITH KuineMyyk AS (
-    -- 1. Arvutan iga kuu kogukäibe (kasutan DATE_TRUNC, et hoida aastad ja kuud lahus)
+-- Step 1: I find the sales trend in Pärnu by month + I calculate the average purchase for all months and find the percentage difference with the annual average
+WITH MonthlySales AS (
+    -- I calculate the total turnover each month (I use DATE_TRUNC to keep years and months separate)    
     SELECT 
-        DATE_TRUNC('month', sale_date) AS kuu,
-        SUM(total_price) AS kuu_tulu
+        DATE_TRUNC('month', sale_date) AS month,
+        SUM(total_price) AS monthly_income
     FROM sales
-    WHERE store_location = 'Pärnu' -- Näide Pärnu poe põhjal
+    WHERE store_location = 'Pärnu' -- Example based on the Pärnu store
     GROUP BY 1
 ),
-Statistika AS (
-    -- 2. Arvutan kõigi kuude keskmise tulu
+Statistics AS (
+    -- I calculate the average income for all months
     SELECT 
-        AVG(kuu_tulu) AS aasta_keskmine_kuu
-    FROM KuineMyyk
+        AVG(monthly_income) AS average_month_of_year
+    FROM MonthlySales
 )
--- 3. Leian vahe protsendi valemiga: ((Kuu tulu - Keskmine) / Keskmine) * 100
+    -- I find the difference percentage with the formula: ((monthly_turnover - annual_average) / annual_average) * 100
 SELECT 
-    kuu,
-    ROUND(kuu_tulu, 2) AS kuu_kaive,
-    ROUND(aasta_keskmine_kuu, 2) AS aasta_keskmine,
-    ROUND(((kuu_tulu - aasta_keskmine_kuu) / aasta_keskmine_kuu) * 100, 2) AS vahe_protsent
-FROM KuineMyyk, Statistika
-ORDER BY vahe_protsent DESC;
+    month,
+    ROUND(monthly_income, 2) AS monthly_turnover,
+    ROUND(average_month_of_year, 2) AS annual_average,
+    ROUND(((monthly_income - average_month_of_year) / average_month_of_year) * 100, 2) AS difference_percentage
+FROM MonthlySales, Statistics
+ORDER BY difference_percentage DESC;
 
 
-
--- Samm 2: Leian, kui suure protsendi moodustab suve- ja talveperiood aastakäibest
-
-WITH MyykideKoond AS (
+-- Step 2: I find what percentage of the annual turnover is accounted for by the summer and winter periods
+WITH SalesAggregate AS (
     SELECT 
-        SUM(total_price) AS kogu_aasta_tulu,
-        SUM(CASE WHEN EXTRACT(MONTH FROM sale_date) IN (6, 7, 8) THEN total_price ELSE 0 END) AS suve_tulu,
-        SUM(CASE WHEN EXTRACT(MONTH FROM sale_date) IN (12, 1, 2) THEN total_price ELSE 0 END) AS talve_tulu
+        SUM(total_price) AS total_annual_income,
+        SUM(CASE WHEN EXTRACT(MONTH FROM sale_date) IN (6, 7, 8) THEN total_price ELSE 0 END) AS summer_revenue,
+        SUM(CASE WHEN EXTRACT(MONTH FROM sale_date) IN (12, 1, 2) THEN total_price ELSE 0 END) AS winter_revenue
     FROM sales
-    WHERE store_location = 'Pärnu' -- Filtreerin ainult Pärnu poe andmed
+    WHERE store_location = 'Pärnu' -- I only filter the data for the Pärnu store
 )
 SELECT 
-    suve_tulu,
-    talve_tulu,
-    kogu_aasta_tulu,
-    ROUND((suve_tulu / kogu_aasta_tulu) * 100, 2) AS suve_osakaal_protsentides,
-    ROUND((talve_tulu / kogu_aasta_tulu) * 100, 2) AS talve_osakaal_protsentides
-FROM MyykideKoond;
-
--- Vastus: 29% on suve- ja 26% on talveperioodi osakaal
-
+    summer_revenue,
+    winter_revenue,
+    total_annual_income,
+    ROUND((summer_revenue / total_annual_income) * 100, 2) AS summer_percentage,
+    ROUND((winter_revenue / total_annual_income) * 100, 2) AS winter_percentage
+FROM SalesAggregate;
+-- Answer: 29% is the summer and 26% is the winter period share
 
 
--- Samm 3: Leian nii kuise müügitulu sesoonsuse kui ka hälbe perioodi keskmisest
-
-WITH KuineMyyk AS (
-    -- 1. Arvutan iga kuu kogukäibe
+-- Step 3: I find both the seasonality of monthly sales revenue and the deviation from the period average
+WITH MonthlySales AS (
+    -- 1. I calculate the total turnover every month
     SELECT 
-        DATE_TRUNC('month', sale_date) AS kuu,
-        SUM(total_price) AS kuu_tulu
+        DATE_TRUNC('month', sale_date) AS month,
+        SUM(total_price) AS monthly_income
     FROM sales
-    WHERE store_location = 'Pärnu' -- Filtreerin Pärnu poe andmed
+    WHERE store_location = 'Pärnu' -- I only filter the data for the Pärnu store
     GROUP BY 1
 ),
-Statistika AS (
-    -- 2. Arvutan kõigi kuude aritmeetilise keskmise
+Statistics AS (
+    -- 2. I calculate the arithmetic mean of all months
     SELECT 
-        AVG(kuu_tulu) AS aasta_keskmine_kuu
-    FROM KuineMyyk
+        AVG(monthly_income) AS average_month_of_year
+    FROM MonthlySales
 )
--- 3. Leian vahe protsendi: ((Kuu tulu - Keskmine) / Keskmine) * 100
+    -- 3. I find the difference percentage: ((monthly_income - average_month_of_year) / average_month_of_year) * 100
 SELECT 
-    kuu,
-    ROUND(kuu_tulu, 2) AS kuu_kaive,
-    ROUND(aasta_keskmine_kuu, 2) AS aasta_keskmine,
-    ROUND(((kuu_tulu - aasta_keskmine_kuu) / aasta_keskmine_kuu) * 100, 2) AS vahe_protsent
-FROM KuineMyyk, Statistika
-ORDER BY kuu;
+    month,
+    ROUND(monthly_income, 2) AS monthly_turnover,
+    ROUND(average_month_of_year, 2) AS annual_average,
+    ROUND(((monthly_income - average_month_of_year) / average_month_of_year) * 100, 2) AS vahe_protsent
+FROM MonthlySales, Statistics
+ORDER BY month;
 
 
-
--- Samm 4: Leian TOP 5 toote protsentuaalse panuse Pärnu poe kogukäibest
-
-WITH KoguKäive AS (
-    -- 1. Arvutan esmalt poe kogukäibe
-    SELECT SUM(total_price) AS summa_kokku 
+-- Step 4: I find the percentage contribution of the TOP 5 products to the total sales of the Pärnu store
+WITH TotalTurnover AS (
+    -- 1. I first calculate the total turnover of the store
+    SELECT SUM(total_price) AS total_amount 
     FROM sales 
     WHERE store_location = 'Pärnu'
 ),
-TooteKäive AS (
-    -- 2. Leian iga toote käibe ja ühendan nimedega
+ProductTurnover AS (
+    -- 2. I find the turnover of each product and connect it with the names
     SELECT 
         p.product_name,
-        SUM(s.total_price) AS toote_summa
+        SUM(s.total_price) AS product_total_price
     FROM sales s
     JOIN products p ON s.product_id = p.product_id
     WHERE s.store_location = 'Pärnu'
     GROUP BY p.product_name
 )
--- 3. Arvutan protsendid ja võtan TOP 5
-SELECT 
+    -- 3. I calculate the percentages and take the TOP 5SELECT 
     product_name,
-    toote_summa,
-    ROUND((toote_summa / (SELECT summa_kokku FROM KoguKäive)) * 100, 2) AS protsent_käibest
-FROM TooteKäive
-ORDER BY toote_summa DESC
+    product_total_price,
+    ROUND((product_total_price / (SELECT total_amount FROM TotalTurnover)) * 100, 2) AS percentage_of_turnover
+FROM ProductTurnover
+ORDER BY product_total_price DESC
 LIMIT 5;
 
 
-
--- Samm 5: Kontrollin kasvumäära 2024 vs 2023
-
-WITH AastaneMyyk AS (
-    -- 1. Grupeerin müügitulu aastate kaupa
+-- Step 5: I check the growth rate 2024 vs 2023
+WITH AnnualSales AS (
+    -- 1. Group sales revenue by year
     SELECT 
-        EXTRACT(YEAR FROM sale_date) AS aasta,
-        SUM(total_price) AS aasta_kaive
+        EXTRACT(YEAR FROM sale_date) AS year,
+        SUM(total_price) AS annual_turnover
     FROM sales
-    WHERE store_location = 'Pärnu' -- Filtreerin Pärnu poe andmed
+    WHERE store_location = 'Pärnu' -- I only filter the data for the Pärnu store
     GROUP BY 1
 ),
-Vordlus AS (
-    -- 2. Kasutan LAG() funktsiooni, et tuua eelmise aasta väärtus praeguse kõrvale
+Comparison AS (
+    -- 2. I use the LAG() function to bring last year's value next to the current one
     SELECT 
-        aasta,
-        aasta_kaive,
-        LAG(aasta_kaive) OVER (ORDER BY aasta) AS eelmine_aasta
-    FROM AastaneMyyk
+        year,
+        annual_turnover,
+        LAG(annual_turnover) OVER (ORDER BY year) AS last_year
+    FROM AnnualSales
 )
--- 3. Arvutan kasvumäära valemiga: ((Uus - Vana) / Vana) * 100
+    -- 3. I calculate the growth rate with the formula: ((New - Old) / Old) * 100
 SELECT 
-    aasta,
-    ROUND(aasta_kaive, 2) AS tulu_2024,
-    ROUND(eelmine_aasta, 2) AS tulu_2023,
-    ROUND(((aasta_kaive - eelmine_aasta) / eelmine_aasta) * 100, 2) AS kasvumaar_yoy
-FROM Vordlus
-WHERE aasta = 2024;
-
--- Vastus: Kasvumäär 2024. ja 2023. aasta võrdluses on 4,30%
+    year,
+    ROUND(annual_turnover, 2) AS income_2024,
+    ROUND(last_year, 2) AS income_2023,
+    ROUND(((annual_turnover - last_year) / last_year) * 100, 2) AS growth_rate_yoy
+FROM Comparison
+WHERE year = 2024;
+-- Answer: The growth rate between 2024 and 2023 is 4.30%

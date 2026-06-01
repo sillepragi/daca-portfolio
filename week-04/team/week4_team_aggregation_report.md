@@ -1,50 +1,50 @@
-# Meeskonnatöö koondraport: Nädal 4 - SQL agregatsioon
-**Osakond:** UrbanStyle Turundusanalüüsi osakond
+# Teamwork summary report: Week 4 — SQL aggregation
+**Department:** UrbanStyle Marketing analytics department
 
-### 1. Peamised leiud
+### 1. Key findings
 
-#### Müügitrendid ja kasv
-*   **Erakordne kasv:** Aastane käibe kasv 2024. aastal oli **100%**.
-*   **Sesoonsus:** Detsember oli rekordkuu **54% käibe kasvuga**, samas kui september näitas suurimat langust (-25%).
-*   **Tellimusväärtus:** Keskmine tellimusväärtus (AOV) saavutas tipu oktoobris (**326 €**).
-*   **Kategooriate fookus:** Suurima osakaalu käibest annavad **jalanõud (27%)**, **meesteriided (26%)** ja **naisteriided (24%)**, millel on ka kõrgeim keskmine hind.
+#### Sales trends and growth
+* **Extraordinary growth:** Year-over-year revenue growth in 2024 was **100%**.
+* **Seasonality:** December was a record month with **54% revenue growth**, while September showed the biggest decline (-25%).
+* **Order value:** Average Order Value (AOV) peaked in October (**€326**).
+* **Category focus:** **Footwear (27%)**, **Menswear (26%)** and **Womenswear (24%)** account for the largest share of revenue, which also has the highest average price.
 
-#### Kliendigruppide analüüs
-*   **VIP-kliendid:** Tuvastatud **10 VIP-klienti**, kelle keskmine käive ulatub **22 833 €-ni**.
-*   **Regionaalne jaotus:** VIP-kliendid asuvad peamiselt Pärnus (4) ja Tallinnas (3).
-*   **Potentsiaal:** Registreeritud on 2536 uut klienti, kelle keskmine kulu on vaid 908 €, mis viitab suurele kasvupotentsiaalile läbi suunatud kampaaniate.
+#### Customer group analysis
+* **VIP customers:** **10 VIP customers** identified, with an average turnover of **22,833 €**.
+* **Regional distribution:** VIP customers are mainly located in Pärnu (4) and Tallinn (3).
+* **Potential:** 2536 new customers have been registered, with an average spend of only €908, indicating a high growth potential through targeted campaigns.
 
-#### Inventuuri ja kasumlikkuse audit
-*   **Varude kriis:** Tuvastatud on kriitiline ebaefektiivsus – laoseis on **20 korda suurem** kui igakuine müük (müüakse vaid 5% varudest). See tähendab seisvat raha ja suuri hoiukulusid.
-*   **Kasumi hajutatus:** TOP 3 toodet annavad vaid 8-10% brutokasumist, mis näitab, et kasumlikkus on hajutatud ja ettevõte ei sõltu vaid üksikutest bestselleritest.
+#### Inventory and profitability audit
+* **Inventory crisis:** Critical inefficiency identified – inventory is **20 times** higher than monthly sales (only 5% of inventory is sold). This means idle money and high storage costs.
+* **Profit dispersion:** TOP 3 products only contribute 8-10% of gross profit, which indicates that profitability is dispersed and the company does not depend only on individual bestsellers.
 
-#### Turunduse efektiivsus (ROI)
-*   **Kanalite puhastus:** Ühtlustatud turunduskanalite nimekujud (nt "*fb ads*" -> "*Facebook Ads*"), mis parandas andmete usaldusväärsust.
-*   **Efektiivseim kanal:** ***Facebook Ads*** toob kõrgeima keskmise tellimuse (943.95 €).
-*   **Maht vs väärtus:** *Google Organic* toob mahuliselt enim kliente (1884), kuid on keskmiselt tellimuselt alles 7. kohal.
-
----
-
-### 2. Analüüsi suurimad üllatused
-
-*   **Kliendibaasi kontsentratsioon:** Analüüs näitas, et vähem kui 1% klientidest (10 VIP-klienti) toob sisse suurema osa käibest, mis tähendab, et ettevõtte edu sõltub väga kitsast segmendist.
-*   **Hajutatud kasumi struktuur:** Erinevalt ootustest ei domineeri müügis vaid üksikud bestsellerid (TOP 3 toodet annavad vaid 8-10% kasumist). Kasumlikkus on hajutatud paljude toodete vahel, mis tähendab, et ei tohiks keskenduda liialt vaid TOP toodetele.
-*   **Kriitiline laoseis:** Tuvastatud liialt suured laoseisud ja samuti on varude juhtimine nõrk. Hetkel on kaupa laos 20 korda rohkem kui müüki (müük/laoseis suhe on vaid 0,05), mis tähendab, et raha seisab laos kinni ja kaasnevad suured hoiukulud.
+#### Marketing efficiency (ROI)
+* **Channel cleanup:** Unified marketing channel names (e.g. "fb ads" -> "Facebook Ads"), which improved data reliability.
+* **Most effective channel:** **Facebook Ads** brings the highest average order (€943.95).
+* **Volume vs. value:** Google Organic brings the most customers in terms of volume (1884), but is only in 7th place in terms of average order.
 
 ---
 
-### 3. Strateegilised soovitused turundusjuhile
+### 2. Biggest surprises of the analysis
 
-*   **Varude ja kampaaniate ajastus:** 
-    *   Suurendada varusid enne suveperioodi ja detsembri pühadeperioodi, kuna detsembris on näha rekordilist 54%-list käibe kasvu.
-    *   Alustada jõulukampaaniatega juba novembris, et leevendada novembrikuu madalamat müüki.
-    *   Fokuseerida kampaaniad suvelõpule ja sügise algusele (august, september), et vältida neil kuudel esinevat käibelangust.
-*   **Tootekategooriate fookus:** Keskenduda turunduses TOP kategooriatele: **jalanõud (27% käibest)**, **meesteriided (26%)** ja **naisteriided (24%)**, mis toovad stabiilseima rahavoo ja millel on kõrgeim keskmine hind.
-*   **Kliendisuhete arendamine:** Keskenduda VIP-klientide hoidmisele ning luua strateegiad, mis aitavad "Uus" segmendi kliente (2536 inimest) kasvatada "Regular" ja "VIP" tasemele.
-*   **Varude optimeerimine:** Vähendada ebaefektiivsete ja aeglaselt liikuvate toodete laovaru, et tõsta kasumlikkust, ning vältida nende juurde tellimist. Kasutada laoseisu vähendamiseks suunatud allahindlusi.
+* **Customer base concentration:** The analysis showed that less than 1% of customers (10 VIP customers) bring in the majority of turnover, which means that the company's success depends on a very narrow segment.
+* **Dispersed profit structure:** Contrary to expectations, sales are not dominated by a few bestsellers (TOP 3 products only provide 8-10% of profit). Profitability is spread across many products, which means that you should not focus too much on just the TOP products.
+* **Critical inventory:** Excessive inventory levels have been identified and inventory management is also weak. Currently, there are 20 times more goods in stock than sales (sales/inventory ratio is only 0.05), which means that money is stuck in inventory and high storage costs are involved.
 
 ---
 
-### 4. Andmete puudujäägid ja piirangud
+### 3. Strategic recommendations for the marketing manager
 
-*   **Kampaaniate kulud:** Analüüsist puuduvad andmed turunduskampaaniate kulude kohta, mis takistab täpse turunduse ROI (tasuvuse) arvutamist.
+* **Timing of inventory and campaigns:**
+* Increase inventory before the summer period and the December holiday period, as December sees a record 54% increase in sales.
+* Start Christmas campaigns already in November to alleviate lower sales in November.
+* Focus campaigns on the end of summer and the beginning of autumn (August, September) to avoid a decline in sales during these months.
+* **Product category focus:** Focus on the TOP categories in marketing: **footwear (27% of turnover)**, **men's clothing (26%)** and **women's clothing (24%)**, which bring the most stable cash flow and have the highest average price.
+* **Customer relationship development:** Focus on retaining VIP customers and create strategies that help grow customers in the "New" segment (2536 people) to the "Regular" and "VIP" levels.
+* **Inventory optimization:** Reduce the inventory of inefficient and slow-moving products to increase profitability and avoid ordering them. Use targeted discounts to reduce inventory.
+
+---
+
+### 4. Data gaps and limitations
+
+* **Campaign costs:** The analysis lacks data on the costs of marketing campaigns, which prevents the calculation of accurate marketing ROI (profitability).

@@ -1,7 +1,7 @@
-### Pärnu kaupluse andmelugu
+### Pärnu store data story
 
-Pärnu kauplust on traditsiooniliselt peetud vaid sesoonseks suveäriks, kus augusti müügitipud ulatuvad 17 000 euroni (66% üle keskmise), kuid andmete analüüs paljastas oodatust märksa stabiilsema aastaringselt tugeva äriüksuse.
+The Pärnu store has traditionally been considered a seasonal summer business, with August sales peaks reaching 17 000 euros (66% above average), but data analysis revealed a much more stable year-round strong business unit than expected.
 
-Analüüs näitab, et suveperiood toodab küll 29% aastakäibest, kuid talveperiood järgneb sellele tihedalt 26%-ga, kusjuures huvitaval kombel ei osteta poe kolme peamist *"hero"* toodet suvekuudel mitte üldse.
+The analysis shows that the summer period does generate 29% of annual turnover, but the winter period closely follows with 26%, and interestingly, the store's three main "hero" products are not purchased at all during the summer months.
 
-Tuginedes stabiilsele 4%-lisele aastakasvule (2024 vs 2023) ja kõrgele 273-eurosele keskmisele ostukorvile, soovitan välja töötada talvestrateegia, et muuta praegune 4%-ne aastakasv veelgi kõrgemaks, fokuseerides just madalseisus olevatele kuudele. Samuti soovitan kontrollida ja suurendada laovarusid, et täita jaanuari ja oktoobri müügimõõnad ning olla valmis suveperioodide müügitippudeks.
+Based on a stable 4% annual growth (2024 vs 2023) and a high 273-euro average shopping basket, I recommend developing a winter strategy to make the current 4% annual growth even higher, focusing on the months that are in the doldrums. I also recommend checking and increasing inventory to meet January and October sales peaks and be prepared for the summer sales peaks.

@@ -1,26 +1,26 @@
-# Nädal 5: *Investor-Dashboardi* prototüüp
+# Week 5: Investor dashboard prototype
 
-## Mida ma tegin
-- Andmete agregeerimine: Koostasin SQL päringud, et leida dashboardi jaoks vajalikud koondnumbrid (KPI-d) ja trendid.
-- KPI kaartide loomine: Visualiseerisin neli peamist mõõdikut: kogutulu, klientide arv, keskmine tellimusväärtus (AOV) ja kasv % (YoY).
-- Diagrammitüüpide valik: Koostasin, nii joon-, tulp- kui ka sektordiagramme.
-- Disaini ja hierarhia rakendamine: Paigutasin elemendid järgides F-mustrit, et olulisim info (KPI-d) oleks koheselt nähtav vasakul ülaservas.
+## What I did
+- Aggregate Data: I created SQL queries to find the aggregate numbers (KPIs) and trends needed for the dashboard.
+- Create KPI charts: I visualized four key metrics: total revenue, number of customers, average order value (AOV), and growth % (YoY).
+- Choose chart types: I created line, bar, and pie charts.
+- Implement design and hierarchy: I arranged elements in an F-pattern so that the most important information (KPIs) was immediately visible at the top left.
 
-## Peamised õppetunnid
-- "Vähem on rohkem" (*Data-Ink Ratio*): Õppisin eemaldama liigset visuaalset müra (nt ruudustikujooned, 3D-efektid), et fookus jääks ainult olulistele andmetele.
-- Disainiotsuste tegemine: Rakendasin Cole Nussbaumer Knaflicu põhimõtteid, et muuta graafikud lihtsasti loetavaks.
-- Brändi järjepidevus: Kasutasin UrbanStyle'i ametlikke värve (*Teal* #009B8D ja *Navy* #1A1A2E), et luua professionaalne ja usaldusväärne esitlus.
-- Äritõlgendus visualiseerimisega: Visualiseerimine ei ole lihtsalt "ilus graafik", vaid kommunikatsioonitööriist, mis peab pakkuma soovitusi, mitte ainult fakte.
+## Key lessons learned
+- "Less is More" (Data-Ink Ratio): I learned to remove excess visual noise (e.g., grid lines, 3D effects) to focus only on the important data.
+- Design Decision Making: I applied Cole Nussbaumer Knaflic's principles to make the graphs easy to read.
+- Brand Consistency: I used UrbanStyle's official colors (Teal #009B8D and Navy #1A1A2E) to create a professional and trustworthy presentation.
+- Business Interpretation with Visualization: A visualization is not just a "pretty graph", but a communication tool that should provide recommendations, not just facts.
 
-## AI kasutamine
-Kasutasin AI-d, et süvitsi mõista visualiseerimise teoreetilisi aluseid (nt Knaflicu disainerimõtlemine). Samuti seletas AI *Power BI* filtrite ja andmemudeli vahelisi seoseid (nt "*Cross-filter direction*" seadistamine).
+## Using AI
+I used AI to gain a deep understanding of the theoretical foundations of visualization (e.g. Knaflic's designer thinking). AI also explained the relationships between Power BI filters and the data model (e.g. setting up "Cross-filter direction").
 
-## Failid
-- **[dashboard_screenshot.png](individual/dashboard_screenshot.png)** – Viiendal nädalal tehtud isikliku dashboardi kuvatõmmis  
-- **[design_decisions.md](individual/design_decisions.md)** – *Marketing dashboard*'i disainiotsuste selgitus
-- **[marketing_dashboard_screenshot.png](individual/marketing_dashboard_screenshot.png)** – *Marketing dashboard*'i kuvatõmmis
-- **[marketing_dashboard.pbix](individual/marketing_dashboard.pbix)** – *Marketing dashboard*'i *Power BI* fail
-- **[week5_marketing_dashboard.sql](individual/week5_marketing_dashboard.sql)** – Müügikanalite analüüsi SQL päringud koos selgitavate kommentaaridega
+## Files
+- **[dashboard_screenshot.png](individual/dashboard_screenshot.png)** – Screenshot of personal dashboard taken in week 5
+- **[design_decisions.md](individual/design_decisions.md)** – Explanation of design decisions for Marketing dashboard
+- **[marketing_dashboard_screenshot.png](individual/marketing_dashboard_screenshot.png)** – Screenshot of Marketing dashboard
+- **[marketing_dashboard.pbix](individual/marketing_dashboard.pbix)** – Power BI file for Marketing dashboard
+- **[week5_marketing_dashboard.sql](individual/week5_marketing_dashboard.sql)** – Sales channel analysis SQL queries with explanatory comments
 
-## Meeskonna töö
-- **[investor_dashboard.png](team/investor_dashboard.png)** – meeskonna grupitöö koondvaate kuvatõmmis koos kokkuvõttega (äritõlgendus, fookus/soovitus)
+## Team work
+- **[investor_dashboard.png](team/investor_dashboard.png)** – Screenshot of team group work summary view with summary (business interpretation, focus/recommendation)
