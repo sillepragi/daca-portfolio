@@ -38,7 +38,7 @@ I am excited to continue growing in the analytics field and am currently looking
 | 04 | **SQL Aggregation & KPIs** | ✅ Completed | [Sales Aggregation Analysis](./week-04) |
 | 05–06 | **Data Visualization** | ✅ Completed | [Investor Dashboard](./week-05) [& Storytelling](./week-06) |
 | 07–08 | **Python for Data Analysis** | ✅ Completed | [RFM Segmentation](./week-07) [& Automated ETL Pipeline](./week-08) |
-| 09–10 | **Portfolio Development & Career Preparation** | ✅ Completed | [Recruitment Simulation](./week-09) [Synthesis Analysis & Portfolio Defense](./week-10) |
+| 09–10 | **Portfolio Development & Career Preparation** | ✅ Completed | [Recruitment Simulation](./week-09) [& Synthesis Analysis with Portfolio Defense](./week-10) |
 
 ## 📫 Contact
 Feel free to connect with me or follow my data analytics journey:
